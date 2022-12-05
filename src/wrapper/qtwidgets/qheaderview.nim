@@ -1,16 +1,12 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(itemviews)
 discard "forward decl of QHeaderViewPrivate"
 discard "forward decl of QStyleOptionHeader"
-type
-  QHeaderView* {.importcpp: "QHeaderView", header: "qheaderview.h", bycopy.} = object of QAbstractItemView
 
-  QHeaderViewResizeMode* {.size: sizeof(cint),
-                          importcpp: "QHeaderView::ResizeMode",
-                          header: "qheaderview.h".} = enum
-    Interactive, Stretch, Fixed, ResizeToContents, Custom = fixed
 
 
 proc constructQHeaderView*(orientation: Orientation; parent: ptr QWidget = nil): QHeaderView {.

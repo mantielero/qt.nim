@@ -1,12 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 discard "forward decl of QMargins"
 discard "forward decl of QScrollBar"
 discard "forward decl of QAbstractScrollAreaPrivate"
-type
-  QAbstractScrollArea* {.importcpp: "QAbstractScrollArea",
-                        header: "qabstractscrollarea.h", bycopy.} = object of QFrame
 
 
 proc constructQAbstractScrollArea*(parent: ptr QWidget = nil): QAbstractScrollArea {.
@@ -14,10 +13,6 @@ proc constructQAbstractScrollArea*(parent: ptr QWidget = nil): QAbstractScrollAr
     header: "qabstractscrollarea.h".}
 proc destroyQAbstractScrollArea*(this: var QAbstractScrollArea) {.
     importcpp: "#.~QAbstractScrollArea()", header: "qabstractscrollarea.h".}
-type
-  QAbstractScrollAreaSizeAdjustPolicy* {.size: sizeof(cint), importcpp: "QAbstractScrollArea::SizeAdjustPolicy",
-                                        header: "qabstractscrollarea.h".} = enum
-    AdjustIgnored, AdjustToContentsOnFirstShow, AdjustToContents
 
 
 proc verticalScrollBarPolicy*(this: QAbstractScrollArea): ScrollBarPolicy {.

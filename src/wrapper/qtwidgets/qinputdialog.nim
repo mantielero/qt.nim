@@ -1,23 +1,13 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(inputdialog)
 discard "forward decl of QInputDialogPrivate"
-type
-  QInputDialog* {.importcpp: "QInputDialog", header: "qinputdialog.h", bycopy.} = object of QDialog
-
-  QInputDialogInputDialogOption* {.size: sizeof(cint),
-                                  importcpp: "QInputDialog::InputDialogOption",
-                                  header: "qinputdialog.h".} = enum
-    NoButtons = 0x00000001, UseListViewForComboBoxItems = 0x00000002,
-    UsePlainTextEditForTextInput = 0x00000004
 
 
-type
-  QInputDialogInputMode* {.size: sizeof(cint),
-                          importcpp: "QInputDialog::InputMode",
-                          header: "qinputdialog.h".} = enum
-    TextInput, IntInput, DoubleInput
+
 
 
 proc constructQInputDialog*(parent: ptr QWidget = nil;

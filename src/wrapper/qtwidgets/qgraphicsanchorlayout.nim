@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,9 +7,6 @@ qt_Require_Config(graphicsview)
 discard "forward decl of QGraphicsAnchorPrivate"
 discard "forward decl of QGraphicsAnchorLayout"
 discard "forward decl of QGraphicsAnchorLayoutPrivate"
-type
-  QGraphicsAnchor* {.importcpp: "QGraphicsAnchor",
-                    header: "qgraphicsanchorlayout.h", bycopy.} = object of QObject
 
 
 proc setSpacing*(this: var QGraphicsAnchor; spacing: Qreal) {.importcpp: "setSpacing",
@@ -22,9 +21,6 @@ proc sizePolicy*(this: QGraphicsAnchor): Policy {.noSideEffect,
     importcpp: "sizePolicy", header: "qgraphicsanchorlayout.h".}
 proc destroyQGraphicsAnchor*(this: var QGraphicsAnchor) {.
     importcpp: "#.~QGraphicsAnchor()", header: "qgraphicsanchorlayout.h".}
-type
-  QGraphicsAnchorLayout* {.importcpp: "QGraphicsAnchorLayout",
-                          header: "qgraphicsanchorlayout.h", bycopy.} = object of QGraphicsLayout
 
 
 proc constructQGraphicsAnchorLayout*(parent: ptr QGraphicsLayoutItem = nil): QGraphicsAnchorLayout {.

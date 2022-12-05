@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -6,38 +8,11 @@ discard "forward decl of QLabel"
 discard "forward decl of QMessageBoxPrivate"
 discard "forward decl of QAbstractButton"
 discard "forward decl of QCheckBox"
-type
-  QMessageBox* {.importcpp: "QMessageBox", header: "qmessagebox.h", bycopy.} = object of QDialog
-    standardButtons* {.importc: "StandardButtons".}: Q_Flag
-
-  QMessageBoxIcon* {.size: sizeof(cint), importcpp: "QMessageBox::Icon",
-                    header: "qmessagebox.h".} = enum ##  keep this in sync with QMessageDialogOptions::Icon
-    NoIcon = 0, Information = 1, Warning = 2, Critical = 3, Question = 4
 
 
-type
-  QMessageBoxButtonRole* {.size: sizeof(cint),
-                          importcpp: "QMessageBox::ButtonRole",
-                          header: "qmessagebox.h".} = enum ##  keep this in sync with QDialogButtonBox::ButtonRole and QPlatformDialogHelper::ButtonRole
-    InvalidRole = -1, AcceptRole, RejectRole, DestructiveRole, ActionRole, HelpRole,
-    YesRole, NoRole, ResetRole, ApplyRole, NRoles
 
 
-type
-  QMessageBoxStandardButton* {.size: sizeof(cint),
-                              importcpp: "QMessageBox::StandardButton",
-                              header: "qmessagebox.h".} = enum ##  keep this in sync with QDialogButtonBox::StandardButton and QPlatformDialogHelper::StandardButton
-    NoButton = 0x00000000, Default = 0x00000100, ##  obsolete
-    Escape = 0x00000200,        ##  obsolete
-    FlagMask = 0x00000300,      ##  obsolete
-    ButtonMask = not flagMask, Ok = 0x00000400, Save = 0x00000800, SaveAll = 0x00001000,
-    Open = 0x00002000, Yes = 0x00004000, YesToAll = 0x00008000, No = 0x00010000,
-    NoToAll = 0x00020000, Abort = 0x00040000, Retry = 0x00080000, Ignore = 0x00100000,
-    Close = 0x00200000, Cancel = 0x00400000, Discard = 0x00800000, Help = 0x01000000,
-    Apply = 0x02000000, Reset = 0x04000000, RestoreDefaults = 0x08000000, FirstButton = ok, ##  internal
-    LastButton = restoreDefaults, ##  internal
-    YesAll = yesToAll,          ##  obsolete
-    NoAll = noToAll             ##  obsolete
+
 
 
 when qt_Version < qt_Version_Check(7, 0, 0):
@@ -216,3 +191,4 @@ template qt_Require_Version*(argc, argv, str: untyped): void =
     var s: QString
     critical(0, tr("Incompatible Qt Library Error"), s, abort, 0)
     qFatal("%s", s.toLatin1().data())
+

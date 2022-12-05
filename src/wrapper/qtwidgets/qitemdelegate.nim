@@ -1,11 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(itemviews)
 discard "forward decl of QItemDelegatePrivate"
 discard "forward decl of QItemEditorFactory"
-type
-  QItemDelegate* {.importcpp: "QItemDelegate", header: "qitemdelegate.h", bycopy.} = object of QAbstractItemDelegate
 
 
 proc constructQItemDelegate*(parent: ptr QObject = nil): QItemDelegate {.constructor,

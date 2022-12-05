@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -9,13 +11,7 @@ discard "forward decl of QPlainTextEditPrivate"
 discard "forward decl of QMimeData"
 discard "forward decl of QPagedPaintDevice"
 discard "forward decl of QRegularExpression"
-type
-  QPlainTextEdit* {.importcpp: "QPlainTextEdit", header: "qplaintextedit.h", bycopy.} = object of QAbstractScrollArea
 
-  QPlainTextEditLineWrapMode* {.size: sizeof(cint),
-                               importcpp: "QPlainTextEdit::LineWrapMode",
-                               header: "qplaintextedit.h".} = enum
-    NoWrap, WidgetWidth
 
 
 proc constructQPlainTextEdit*(parent: ptr QWidget = nil): QPlainTextEdit {.constructor,
@@ -163,9 +159,6 @@ proc zoomIn*(this: var QPlainTextEdit; range: cint = 1) {.importcpp: "zoomIn",
 proc zoomOut*(this: var QPlainTextEdit; range: cint = 1) {.importcpp: "zoomOut",
     header: "qplaintextedit.h".}
 discard "forward decl of QPlainTextDocumentLayoutPrivate"
-type
-  QPlainTextDocumentLayout* {.importcpp: "QPlainTextDocumentLayout",
-                             header: "qplaintextedit.h", bycopy.} = object of QAbstractTextDocumentLayout
 
 
 proc constructQPlainTextDocumentLayout*(document: ptr QTextDocument): QPlainTextDocumentLayout {.

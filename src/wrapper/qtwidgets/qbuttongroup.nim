@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2020 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,8 +7,6 @@ qt_Require_Config(buttongroup)
 discard "forward decl of QAbstractButton"
 discard "forward decl of QAbstractButtonPrivate"
 discard "forward decl of QButtonGroupPrivate"
-type
-  QButtonGroup* {.importcpp: "QButtonGroup", header: "qbuttongroup.h", bycopy.} = object of QObject
 
 
 proc constructQButtonGroup*(parent: ptr QObject = nil): QButtonGroup {.constructor,

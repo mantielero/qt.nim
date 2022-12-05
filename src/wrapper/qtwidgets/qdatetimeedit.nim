@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2020 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,17 +7,7 @@ qt_Require_Config(datetimeedit)
 discard "forward decl of QDateTimeEditPrivate"
 discard "forward decl of QStyleOptionSpinBox"
 discard "forward decl of QCalendarWidget"
-type
-  QDateTimeEdit* {.importcpp: "QDateTimeEdit", header: "qdatetimeedit.h", bycopy.} = object of QAbstractSpinBox
-    sections* {.importc: "Sections".}: Q_Flag
 
-  QDateTimeEditSection* {.size: sizeof(cint), importcpp: "QDateTimeEdit::Section",
-                         header: "qdatetimeedit.h".} = enum ##  a sub-type of QDateTimeParser's like-named enum.
-    NoSection = 0x0000, AmPmSection = 0x0001, MSecSection = 0x0002,
-    SecondSection = 0x0004, MinuteSection = 0x0008, HourSection = 0x0010,
-    DaySection = 0x0100, MonthSection = 0x0200, YearSection = 0x0400, TimeSectionsMask = amPmSection or
-        mSecSection or secondSection or minuteSection or hourSection,
-    DateSectionsMask = daySection or monthSection or yearSection
 
 
 proc constructQDateTimeEdit*(parent: ptr QWidget = nil): QDateTimeEdit {.constructor,
@@ -127,8 +119,6 @@ proc setDate*(this: var QDateTimeEdit; date: QDate) {.importcpp: "setDate",
     header: "qdatetimeedit.h".}
 proc setTime*(this: var QDateTimeEdit; time: QTime) {.importcpp: "setTime",
     header: "qdatetimeedit.h".}
-type
-  QTimeEdit* {.importcpp: "QTimeEdit", header: "qdatetimeedit.h", bycopy.} = object of QDateTimeEdit
 
 
 proc constructQTimeEdit*(parent: ptr QWidget = nil): QTimeEdit {.constructor,
@@ -137,8 +127,6 @@ proc constructQTimeEdit*(time: QTime; parent: ptr QWidget = nil): QTimeEdit {.
     constructor, importcpp: "QTimeEdit(@)", header: "qdatetimeedit.h".}
 proc destroyQTimeEdit*(this: var QTimeEdit) {.importcpp: "#.~QTimeEdit()",
     header: "qdatetimeedit.h".}
-type
-  QDateEdit* {.importcpp: "QDateEdit", header: "qdatetimeedit.h", bycopy.} = object of QDateTimeEdit
 
 
 proc constructQDateEdit*(parent: ptr QWidget = nil): QDateEdit {.constructor,

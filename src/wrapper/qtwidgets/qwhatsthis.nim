@@ -1,10 +1,10 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(whatsthis)
 discard "forward decl of QAction"
-type
-  QWhatsThis* {.importcpp: "QWhatsThis", header: "qwhatsthis.h", bycopy.} = object
 
 
 proc enterWhatsThisMode*() {.importcpp: "QWhatsThis::enterWhatsThisMode(@)",

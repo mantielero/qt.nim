@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -8,23 +10,9 @@ discard "forward decl of QPainter"
 discard "forward decl of QPixmap"
 discard "forward decl of QGraphicsEffectSource"
 discard "forward decl of QGraphicsEffectPrivate"
-type
-  QGraphicsEffect* {.importcpp: "QGraphicsEffect", header: "qgraphicseffect.h",
-                    bycopy.} = object of QObject
-    changeFlags* {.importc: "ChangeFlags".}: Q_Flag
-
-  QGraphicsEffectChangeFlag* {.size: sizeof(cint),
-                              importcpp: "QGraphicsEffect::ChangeFlag",
-                              header: "qgraphicseffect.h".} = enum
-    SourceAttached = 0x1, SourceDetached = 0x2, SourceBoundingRectChanged = 0x4,
-    SourceInvalidated = 0x8
 
 
-type
-  QGraphicsEffectPixmapPadMode* {.size: sizeof(cint),
-                                 importcpp: "QGraphicsEffect::PixmapPadMode",
-                                 header: "qgraphicseffect.h".} = enum
-    NoPad, PadToTransparentBorder, PadToEffectiveBoundingRect
+
 
 
 proc constructQGraphicsEffect*(parent: ptr QObject = nil): QGraphicsEffect {.
@@ -44,9 +32,6 @@ proc update*(this: var QGraphicsEffect) {.importcpp: "update",
 proc source*(this: QGraphicsEffect): ptr QGraphicsEffectSource {.noSideEffect,
     importcpp: "source", header: "qgraphicseffect.h".}
 discard "forward decl of QGraphicsColorizeEffectPrivate"
-type
-  QGraphicsColorizeEffect* {.importcpp: "QGraphicsColorizeEffect",
-                            header: "qgraphicseffect.h", bycopy.} = object of QGraphicsEffect
 
 
 proc constructQGraphicsColorizeEffect*(parent: ptr QObject = nil): QGraphicsColorizeEffect {.
@@ -63,15 +48,7 @@ proc setColor*(this: var QGraphicsColorizeEffect; c: QColor) {.importcpp: "setCo
 proc setStrength*(this: var QGraphicsColorizeEffect; strength: Qreal) {.
     importcpp: "setStrength", header: "qgraphicseffect.h".}
 discard "forward decl of QGraphicsBlurEffectPrivate"
-type
-  QGraphicsBlurEffect* {.importcpp: "QGraphicsBlurEffect",
-                        header: "qgraphicseffect.h", bycopy.} = object of QGraphicsEffect
-    blurHints* {.importc: "BlurHints".}: Q_Flag
 
-  QGraphicsBlurEffectBlurHint* {.size: sizeof(cint),
-                                importcpp: "QGraphicsBlurEffect::BlurHint",
-                                header: "qgraphicseffect.h".} = enum
-    PerformanceHint = 0x00, QualityHint = 0x01, AnimationHint = 0x02
 
 
 proc constructQGraphicsBlurEffect*(parent: ptr QObject = nil): QGraphicsBlurEffect {.
@@ -89,9 +66,6 @@ proc setBlurRadius*(this: var QGraphicsBlurEffect; blurRadius: Qreal) {.
 proc setBlurHints*(this: var QGraphicsBlurEffect; hints: BlurHints) {.
     importcpp: "setBlurHints", header: "qgraphicseffect.h".}
 discard "forward decl of QGraphicsDropShadowEffectPrivate"
-type
-  QGraphicsDropShadowEffect* {.importcpp: "QGraphicsDropShadowEffect",
-                              header: "qgraphicseffect.h", bycopy.} = object of QGraphicsEffect
 
 
 proc constructQGraphicsDropShadowEffect*(parent: ptr QObject = nil): QGraphicsDropShadowEffect {.
@@ -126,9 +100,6 @@ proc setBlurRadius*(this: var QGraphicsDropShadowEffect; blurRadius: Qreal) {.
 proc setColor*(this: var QGraphicsDropShadowEffect; color: QColor) {.
     importcpp: "setColor", header: "qgraphicseffect.h".}
 discard "forward decl of QGraphicsOpacityEffectPrivate"
-type
-  QGraphicsOpacityEffect* {.importcpp: "QGraphicsOpacityEffect",
-                           header: "qgraphicseffect.h", bycopy.} = object of QGraphicsEffect
 
 
 proc constructQGraphicsOpacityEffect*(parent: ptr QObject = nil): QGraphicsOpacityEffect {.

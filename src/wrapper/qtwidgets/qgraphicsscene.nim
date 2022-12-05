@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -39,20 +41,9 @@ discard "forward decl of QSizeF"
 discard "forward decl of QStyle"
 discard "forward decl of QStyleOptionGraphicsItem"
 discard "forward decl of QGraphicsScenePrivate"
-type
-  QGraphicsScene* {.importcpp: "QGraphicsScene", header: "qgraphicsscene.h", bycopy.} = object of QObject
-
-  QGraphicsSceneItemIndexMethod* {.size: sizeof(cint),
-                                  importcpp: "QGraphicsScene::ItemIndexMethod",
-                                  header: "qgraphicsscene.h".} = enum
-    NoIndex = -1, BspTreeIndex
 
 
-type
-  QGraphicsSceneSceneLayer* {.size: sizeof(cint),
-                             importcpp: "QGraphicsScene::SceneLayer",
-                             header: "qgraphicsscene.h".} = enum
-    ItemLayer = 0x1, BackgroundLayer = 0x2, ForegroundLayer = 0x4, AllLayers = 0xffff
+
 
 
 proc constructQGraphicsScene*(parent: ptr QObject = nil): QGraphicsScene {.constructor,

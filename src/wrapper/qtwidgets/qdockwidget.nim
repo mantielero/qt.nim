@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -6,9 +8,6 @@ discard "forward decl of QDockAreaLayout"
 discard "forward decl of QDockWidgetPrivate"
 discard "forward decl of QMainWindow"
 discard "forward decl of QStyleOptionDockWidget"
-type
-  QDockWidget* {.importcpp: "QDockWidget", header: "qdockwidget.h", bycopy.} = object of QWidget
-    dockWidgetFeatures* {.importc: "DockWidgetFeatures".}: Q_Flag
 
 
 proc constructQDockWidget*(title: QString; parent: ptr QWidget = nil;
@@ -23,13 +22,6 @@ proc widget*(this: QDockWidget): ptr QWidget {.noSideEffect, importcpp: "widget"
     header: "qdockwidget.h".}
 proc setWidget*(this: var QDockWidget; widget: ptr QWidget) {.importcpp: "setWidget",
     header: "qdockwidget.h".}
-type
-  QDockWidgetDockWidgetFeature* {.size: sizeof(cint),
-                                 importcpp: "QDockWidget::DockWidgetFeature",
-                                 header: "qdockwidget.h".} = enum
-    NoDockWidgetFeatures = 0x00, DockWidgetClosable = 0x01, DockWidgetMovable = 0x02,
-    DockWidgetFloatable = 0x04, DockWidgetVerticalTitleBar = 0x08,
-    DockWidgetFeatureMask = 0x0f, Reserved = 0xff
 
 
 proc setFeatures*(this: var QDockWidget; features: DockWidgetFeatures) {.

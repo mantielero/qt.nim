@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,33 +7,16 @@ qt_Require_Config(tabbar)
 discard "forward decl of QIcon"
 discard "forward decl of QTabBarPrivate"
 discard "forward decl of QStyleOptionTab"
-type
-  QTabBar* {.importcpp: "QTabBar", header: "qtabbar.h", bycopy.} = object of QWidget
 
 
 proc constructQTabBar*(parent: ptr QWidget = nil): QTabBar {.constructor,
     importcpp: "QTabBar(@)", header: "qtabbar.h".}
 proc destroyQTabBar*(this: var QTabBar) {.importcpp: "#.~QTabBar()",
                                       header: "qtabbar.h".}
-type
-  QTabBarShape* {.size: sizeof(cint), importcpp: "QTabBar::Shape",
-                 header: "qtabbar.h".} = enum
-    RoundedNorth, RoundedSouth, RoundedWest, RoundedEast, TriangularNorth,
-    TriangularSouth, TriangularWest, TriangularEast
 
 
-type
-  QTabBarButtonPosition* {.size: sizeof(cint),
-                          importcpp: "QTabBar::ButtonPosition",
-                          header: "qtabbar.h".} = enum
-    LeftSide, RightSide
 
 
-type
-  QTabBarSelectionBehavior* {.size: sizeof(cint),
-                             importcpp: "QTabBar::SelectionBehavior",
-                             header: "qtabbar.h".} = enum
-    SelectLeftTab, SelectRightTab, SelectPreviousTab
 
 
 proc shape*(this: QTabBar): QTabBarShape {.noSideEffect, importcpp: "shape",

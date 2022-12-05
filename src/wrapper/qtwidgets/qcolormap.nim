@@ -1,14 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 discard "forward decl of QColor"
 discard "forward decl of QColormapPrivate"
-type
-  QColormap* {.importcpp: "QColormap", header: "qcolormap.h", bycopy.} = object
 
-  QColormapMode* {.size: sizeof(cint), importcpp: "QColormap::Mode",
-                  header: "qcolormap.h".} = enum
-    Direct, Indexed, Gray
 
 
 proc initialize*() {.importcpp: "QColormap::initialize(@)", header: "qcolormap.h".}

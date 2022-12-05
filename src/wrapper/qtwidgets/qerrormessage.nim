@@ -1,10 +1,10 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(errormessage)
 discard "forward decl of QErrorMessagePrivate"
-type
-  QErrorMessage* {.importcpp: "QErrorMessage", header: "qerrormessage.h", bycopy.} = object of QDialog
 
 
 proc constructQErrorMessage*(parent: ptr QWidget = nil): QErrorMessage {.constructor,

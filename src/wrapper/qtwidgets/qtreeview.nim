@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,8 +7,6 @@ discard "forward decl of tst_QTreeView"
 qt_Require_Config(treeview)
 discard "forward decl of QTreeViewPrivate"
 discard "forward decl of QHeaderView"
-type
-  QTreeView* {.importcpp: "QTreeView", header: "qtreeview.h", bycopy.} = object of QAbstractItemView
 
 
 proc constructQTreeView*(parent: ptr QWidget = nil): QTreeView {.constructor,

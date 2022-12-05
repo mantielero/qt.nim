@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -27,52 +29,13 @@ discard "forward decl of QPointF"
 discard "forward decl of QRectF"
 discard "forward decl of QStyleOptionGraphicsItem"
 discard "forward decl of QGraphicsItemPrivate"
-type
-  QGraphicsItem* {.importcpp: "QGraphicsItem", header: "qgraphicsitem.h", bycopy.} = object
-
-  QGraphicsItemGraphicsItemFlag* {.size: sizeof(cint),
-                                  importcpp: "QGraphicsItem::GraphicsItemFlag",
-                                  header: "qgraphicsitem.h".} = enum
-    ItemIsMovable = 0x1, ItemIsSelectable = 0x2, ItemIsFocusable = 0x4,
-    ItemClipsToShape = 0x8, ItemClipsChildrenToShape = 0x10,
-    ItemIgnoresTransformations = 0x20, ItemIgnoresParentOpacity = 0x40,
-    ItemDoesntPropagateOpacityToChildren = 0x80, ItemStacksBehindParent = 0x100,
-    ItemUsesExtendedStyleOption = 0x200, ItemHasNoContents = 0x400,
-    ItemSendsGeometryChanges = 0x800, ItemAcceptsInputMethod = 0x1000,
-    ItemNegativeZStacksBehindParent = 0x2000, ItemIsPanel = 0x4000, ItemIsFocusScope = 0x8000, ##  internal
-    ItemSendsScenePositionChanges = 0x10000,
-    ItemStopsClickFocusPropagation = 0x20000, ItemStopsFocusHandling = 0x40000,
-    ItemContainsChildrenInShape = 0x80000
 
 
-type
-  QGraphicsItemGraphicsItemChange* {.size: sizeof(cint), importcpp: "QGraphicsItem::GraphicsItemChange",
-                                    header: "qgraphicsitem.h".} = enum
-    ItemPositionChange, ItemVisibleChange = 2, ItemEnabledChange, ItemSelectedChange,
-    ItemParentChange, ItemChildAddedChange, ItemChildRemovedChange,
-    ItemTransformChange, ItemPositionHasChanged, ItemTransformHasChanged,
-    ItemSceneChange, ItemVisibleHasChanged, ItemEnabledHasChanged,
-    ItemSelectedHasChanged, ItemParentHasChanged, ItemSceneHasChanged,
-    ItemCursorChange, ItemCursorHasChanged, ItemToolTipChange,
-    ItemToolTipHasChanged, ItemFlagsChange, ItemFlagsHaveChanged, ItemZValueChange,
-    ItemZValueHasChanged, ItemOpacityChange, ItemOpacityHasChanged,
-    ItemScenePositionHasChanged, ItemRotationChange, ItemRotationHasChanged,
-    ItemScaleChange, ItemScaleHasChanged, ItemTransformOriginPointChange,
-    ItemTransformOriginPointHasChanged
 
 
-type
-  QGraphicsItemCacheMode* {.size: sizeof(cint),
-                           importcpp: "QGraphicsItem::CacheMode",
-                           header: "qgraphicsitem.h".} = enum
-    NoCache, ItemCoordinateCache, DeviceCoordinateCache
 
 
-type
-  QGraphicsItemPanelModality* {.size: sizeof(cint),
-                               importcpp: "QGraphicsItem::PanelModality",
-                               header: "qgraphicsitem.h".} = enum
-    NonModal, PanelModal, SceneModal
+
 
 
 proc constructQGraphicsItem*(parent: ptr QGraphicsItem = nil): QGraphicsItem {.
@@ -508,8 +471,6 @@ proc mapRectFromParent*(this: QGraphicsItem; ax: Qreal; ay: Qreal; w: Qreal; h: 
     noSideEffect, importcpp: "mapRectFromParent", header: "qgraphicsitem.h".}
 proc mapRectFromScene*(this: QGraphicsItem; ax: Qreal; ay: Qreal; w: Qreal; h: Qreal): QRectF {.
     noSideEffect, importcpp: "mapRectFromScene", header: "qgraphicsitem.h".}
-type
-  QGraphicsObject* {.importcpp: "QGraphicsObject", header: "qgraphicsitem.h", bycopy.} = object of QObject
 
 
 proc constructQGraphicsObject*(parent: ptr QGraphicsItem = nil): QGraphicsObject {.
@@ -524,9 +485,6 @@ proc grabGesture*(this: var QGraphicsObject; `type`: GestureType;
 proc ungrabGesture*(this: var QGraphicsObject; `type`: GestureType) {.
     importcpp: "ungrabGesture", header: "qgraphicsitem.h".}
 discard "forward decl of QAbstractGraphicsShapeItemPrivate"
-type
-  QAbstractGraphicsShapeItem* {.importcpp: "QAbstractGraphicsShapeItem",
-                               header: "qgraphicsitem.h", bycopy.} = object of QGraphicsItem
 
 
 proc constructQAbstractGraphicsShapeItem*(parent: ptr QGraphicsItem = nil): QAbstractGraphicsShapeItem {.
@@ -547,9 +505,6 @@ proc isObscuredBy*(this: QAbstractGraphicsShapeItem; item: ptr QGraphicsItem): b
 proc opaqueArea*(this: QAbstractGraphicsShapeItem): QPainterPath {.noSideEffect,
     importcpp: "opaqueArea", header: "qgraphicsitem.h".}
 discard "forward decl of QGraphicsPathItemPrivate"
-type
-  QGraphicsPathItem* {.importcpp: "QGraphicsPathItem", header: "qgraphicsitem.h",
-                      bycopy.} = object of QAbstractGraphicsShapeItem
 
 
 proc constructQGraphicsPathItem*(parent: ptr QGraphicsItem = nil): QGraphicsPathItem {.
@@ -582,9 +537,6 @@ const
 proc `type`*(this: QGraphicsPathItem): cint {.noSideEffect, importcpp: "type",
     header: "qgraphicsitem.h".}
 discard "forward decl of QGraphicsRectItemPrivate"
-type
-  QGraphicsRectItem* {.importcpp: "QGraphicsRectItem", header: "qgraphicsitem.h",
-                      bycopy.} = object of QAbstractGraphicsShapeItem
 
 
 proc constructQGraphicsRectItem*(parent: ptr QGraphicsItem = nil): QGraphicsRectItem {.
@@ -623,9 +575,6 @@ proc `type`*(this: QGraphicsRectItem): cint {.noSideEffect, importcpp: "type",
 proc setRect*(this: var QGraphicsRectItem; ax: Qreal; ay: Qreal; w: Qreal; h: Qreal) {.
     importcpp: "setRect", header: "qgraphicsitem.h".}
 discard "forward decl of QGraphicsEllipseItemPrivate"
-type
-  QGraphicsEllipseItem* {.importcpp: "QGraphicsEllipseItem",
-                         header: "qgraphicsitem.h", bycopy.} = object of QAbstractGraphicsShapeItem
 
 
 proc constructQGraphicsEllipseItem*(parent: ptr QGraphicsItem = nil): QGraphicsEllipseItem {.
@@ -672,9 +621,6 @@ proc `type`*(this: QGraphicsEllipseItem): cint {.noSideEffect, importcpp: "type"
 proc setRect*(this: var QGraphicsEllipseItem; ax: Qreal; ay: Qreal; w: Qreal; h: Qreal) {.
     importcpp: "setRect", header: "qgraphicsitem.h".}
 discard "forward decl of QGraphicsPolygonItemPrivate"
-type
-  QGraphicsPolygonItem* {.importcpp: "QGraphicsPolygonItem",
-                         header: "qgraphicsitem.h", bycopy.} = object of QAbstractGraphicsShapeItem
 
 
 proc constructQGraphicsPolygonItem*(parent: ptr QGraphicsItem = nil): QGraphicsPolygonItem {.
@@ -711,9 +657,6 @@ const
 proc `type`*(this: QGraphicsPolygonItem): cint {.noSideEffect, importcpp: "type",
     header: "qgraphicsitem.h".}
 discard "forward decl of QGraphicsLineItemPrivate"
-type
-  QGraphicsLineItem* {.importcpp: "QGraphicsLineItem", header: "qgraphicsitem.h",
-                      bycopy.} = object of QGraphicsItem
 
 
 proc constructQGraphicsLineItem*(parent: ptr QGraphicsItem = nil): QGraphicsLineItem {.
@@ -754,14 +697,7 @@ const
 proc `type`*(this: QGraphicsLineItem): cint {.noSideEffect, importcpp: "type",
     header: "qgraphicsitem.h".}
 discard "forward decl of QGraphicsPixmapItemPrivate"
-type
-  QGraphicsPixmapItem* {.importcpp: "QGraphicsPixmapItem",
-                        header: "qgraphicsitem.h", bycopy.} = object of QGraphicsItem
 
-  QGraphicsPixmapItemShapeMode* {.size: sizeof(cint),
-                                 importcpp: "QGraphicsPixmapItem::ShapeMode",
-                                 header: "qgraphicsitem.h".} = enum
-    MaskShape, BoundingRectShape, HeuristicMaskShape
 
 
 proc constructQGraphicsPixmapItem*(parent: ptr QGraphicsItem = nil): QGraphicsPixmapItem {.
@@ -811,9 +747,6 @@ proc setOffset*(this: var QGraphicsPixmapItem; ax: Qreal; ay: Qreal) {.
 discard "forward decl of QGraphicsTextItemPrivate"
 discard "forward decl of QTextDocument"
 discard "forward decl of QTextCursor"
-type
-  QGraphicsTextItem* {.importcpp: "QGraphicsTextItem", header: "qgraphicsitem.h",
-                      bycopy.} = object of QGraphicsObject
 
 
 proc constructQGraphicsTextItem*(parent: ptr QGraphicsItem = nil): QGraphicsTextItem {.
@@ -884,9 +817,6 @@ proc setTextCursor*(this: var QGraphicsTextItem; cursor: QTextCursor) {.
 proc textCursor*(this: QGraphicsTextItem): QTextCursor {.noSideEffect,
     importcpp: "textCursor", header: "qgraphicsitem.h".}
 discard "forward decl of QGraphicsSimpleTextItemPrivate"
-type
-  QGraphicsSimpleTextItem* {.importcpp: "QGraphicsSimpleTextItem",
-                            header: "qgraphicsitem.h", bycopy.} = object of QAbstractGraphicsShapeItem
 
 
 proc constructQGraphicsSimpleTextItem*(parent: ptr QGraphicsItem = nil): QGraphicsSimpleTextItem {.
@@ -923,9 +853,6 @@ const
 proc `type`*(this: QGraphicsSimpleTextItem): cint {.noSideEffect, importcpp: "type",
     header: "qgraphicsitem.h".}
 discard "forward decl of QGraphicsItemGroupPrivate"
-type
-  QGraphicsItemGroup* {.importcpp: "QGraphicsItemGroup", header: "qgraphicsitem.h",
-                       bycopy.} = object of QGraphicsItem
 
 
 proc constructQGraphicsItemGroup*(parent: ptr QGraphicsItem = nil): QGraphicsItemGroup {.

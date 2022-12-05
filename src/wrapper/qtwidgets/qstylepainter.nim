@@ -1,8 +1,8 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
-type
-  QStylePainter* {.importcpp: "QStylePainter", header: "qstylepainter.h", bycopy.} = object of QPainter
 
 
 proc constructQStylePainter*(): QStylePainter {.constructor,

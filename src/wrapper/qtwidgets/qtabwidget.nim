@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,8 +7,6 @@ qt_Require_Config(tabwidget)
 discard "forward decl of QTabBar"
 discard "forward decl of QTabWidgetPrivate"
 discard "forward decl of QStyleOptionTabWidgetFrame"
-type
-  QTabWidget* {.importcpp: "QTabWidget", header: "qtabwidget.h", bycopy.} = object of QWidget
 
 
 proc constructQTabWidget*(parent: ptr QWidget = nil): QTabWidget {.constructor,
@@ -57,11 +57,6 @@ proc indexOf*(this: QTabWidget; widget: ptr QWidget): cint {.noSideEffect,
     importcpp: "indexOf", header: "qtabwidget.h".}
 proc count*(this: QTabWidget): cint {.noSideEffect, importcpp: "count",
                                   header: "qtabwidget.h".}
-type
-  QTabWidgetTabPosition* {.size: sizeof(cint),
-                          importcpp: "QTabWidget::TabPosition",
-                          header: "qtabwidget.h".} = enum
-    North, South, West, East
 
 
 proc tabPosition*(this: QTabWidget): QTabWidgetTabPosition {.noSideEffect,
@@ -76,10 +71,6 @@ proc isMovable*(this: QTabWidget): bool {.noSideEffect, importcpp: "isMovable",
                                       header: "qtabwidget.h".}
 proc setMovable*(this: var QTabWidget; movable: bool) {.importcpp: "setMovable",
     header: "qtabwidget.h".}
-type
-  QTabWidgetTabShape* {.size: sizeof(cint), importcpp: "QTabWidget::TabShape",
-                       header: "qtabwidget.h".} = enum
-    Rounded, Triangular
 
 
 proc tabShape*(this: QTabWidget): QTabWidgetTabShape {.noSideEffect,

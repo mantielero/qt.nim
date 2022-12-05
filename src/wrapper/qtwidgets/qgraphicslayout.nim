@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,9 +7,6 @@ qt_Require_Config(graphicsview)
 discard "forward decl of QGraphicsLayoutPrivate"
 discard "forward decl of QGraphicsLayoutItem"
 discard "forward decl of QGraphicsWidget"
-type
-  QGraphicsLayout* {.importcpp: "QGraphicsLayout", header: "qgraphicslayout.h",
-                    bycopy.} = object of QGraphicsLayoutItem
 
 
 proc constructQGraphicsLayout*(parent: ptr QGraphicsLayoutItem = nil): QGraphicsLayout {.

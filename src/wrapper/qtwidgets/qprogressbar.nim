@@ -1,16 +1,12 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(progressbar)
 discard "forward decl of QProgressBarPrivate"
 discard "forward decl of QStyleOptionProgressBar"
-type
-  QProgressBar* {.importcpp: "QProgressBar", header: "qprogressbar.h", bycopy.} = object of QWidget
 
-  QProgressBarDirection* {.size: sizeof(cint),
-                          importcpp: "QProgressBar::Direction",
-                          header: "qprogressbar.h".} = enum
-    TopToBottom, BottomToTop
 
 
 proc constructQProgressBar*(parent: ptr QWidget = nil): QProgressBar {.constructor,

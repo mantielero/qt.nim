@@ -1,10 +1,10 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 discard "forward decl of QFramePrivate"
 discard "forward decl of QStyleOptionFrame"
-type
-  QFrame* {.importcpp: "QFrame", header: "qframe.h", bycopy.} = object of QWidget
 
 
 proc constructQFrame*(parent: ptr QWidget = nil; f: WindowFlags = windowFlags()): QFrame {.
@@ -18,28 +18,10 @@ proc frameWidth*(this: QFrame): cint {.noSideEffect, importcpp: "frameWidth",
                                    header: "qframe.h".}
 proc sizeHint*(this: QFrame): QSize {.noSideEffect, importcpp: "sizeHint",
                                   header: "qframe.h".}
-type
-  QFrameShape* {.size: sizeof(cint), importcpp: "QFrame::Shape", header: "qframe.h".} = enum
-    NoFrame = 0,                ##  no frame
-    Box = 0x0001,               ##  rectangular box
-    Panel = 0x0002,             ##  rectangular panel
-    WinPanel = 0x0003,          ##  rectangular panel (Windows)
-    HLine = 0x0004,             ##  horizontal line
-    VLine = 0x0005,             ##  vertical line
-    StyledPanel = 0x0006
 
 
-type
-  QFrameShadow* {.size: sizeof(cint), importcpp: "QFrame::Shadow", header: "qframe.h".} = enum
-    Plain = 0x0010,             ##  plain line
-    Raised = 0x0020,            ##  raised shadow effect
-    Sunken = 0x0030
 
 
-type
-  QFrameStyleMask* {.size: sizeof(cint), importcpp: "QFrame::StyleMask",
-                    header: "qframe.h".} = enum
-    ShapeMask = 0x000f, ShadowMask = 0x00f0 ##  mask for the shadow
 
 
 proc frameShape*(this: QFrame): QFrameShape {.noSideEffect, importcpp: "frameShape",

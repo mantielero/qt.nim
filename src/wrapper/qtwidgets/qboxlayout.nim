@@ -1,16 +1,12 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 when defined(QT_INCLUDE_COMPAT):
   discard
 discard "forward decl of QBoxLayoutPrivate"
-type
-  QBoxLayout* {.importcpp: "QBoxLayout", header: "qboxlayout.h", bycopy.} = object of QLayout
 
-  QBoxLayoutDirection* {.size: sizeof(cint), importcpp: "QBoxLayout::Direction",
-                        header: "qboxlayout.h".} = enum
-    LeftToRight, RightToLeft, TopToBottom, BottomToTop, Down = topToBottom,
-    Up = bottomToTop
 
 
 proc constructQBoxLayout*(a1: QBoxLayoutDirection; parent: ptr QWidget = nil): QBoxLayout {.
@@ -86,8 +82,6 @@ proc count*(this: QBoxLayout): cint {.noSideEffect, importcpp: "count",
                                   header: "qboxlayout.h".}
 proc setGeometry*(this: var QBoxLayout; a2: QRect) {.importcpp: "setGeometry",
     header: "qboxlayout.h".}
-type
-  QHBoxLayout* {.importcpp: "QHBoxLayout", header: "qboxlayout.h", bycopy.} = object of QBoxLayout
 
 
 proc constructQHBoxLayout*(): QHBoxLayout {.constructor,
@@ -96,8 +90,6 @@ proc constructQHBoxLayout*(parent: ptr QWidget): QHBoxLayout {.constructor,
     importcpp: "QHBoxLayout(@)", header: "qboxlayout.h".}
 proc destroyQHBoxLayout*(this: var QHBoxLayout) {.importcpp: "#.~QHBoxLayout()",
     header: "qboxlayout.h".}
-type
-  QVBoxLayout* {.importcpp: "QVBoxLayout", header: "qboxlayout.h", bycopy.} = object of QBoxLayout
 
 
 proc constructQVBoxLayout*(): QVBoxLayout {.constructor,

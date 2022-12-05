@@ -1,10 +1,10 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(spinbox)
 discard "forward decl of QSpinBoxPrivate"
-type
-  QSpinBox* {.importcpp: "QSpinBox", header: "qspinbox.h", bycopy.} = object of QAbstractSpinBox
 
 
 proc constructQSpinBox*(parent: ptr QWidget = nil): QSpinBox {.constructor,
@@ -48,8 +48,6 @@ proc setDisplayIntegerBase*(this: var QSpinBox; base: cint) {.
 proc setValue*(this: var QSpinBox; val: cint) {.importcpp: "setValue",
     header: "qspinbox.h".}
 discard "forward decl of QDoubleSpinBoxPrivate"
-type
-  QDoubleSpinBox* {.importcpp: "QDoubleSpinBox", header: "qspinbox.h", bycopy.} = object of QAbstractSpinBox
 
 
 proc constructQDoubleSpinBox*(parent: ptr QWidget = nil): QDoubleSpinBox {.constructor,

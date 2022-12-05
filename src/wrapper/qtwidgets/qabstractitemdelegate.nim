@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -8,13 +10,7 @@ discard "forward decl of QAbstractItemModel"
 discard "forward decl of QAbstractItemView"
 discard "forward decl of QHelpEvent"
 discard "forward decl of QAbstractItemDelegatePrivate"
-type
-  QAbstractItemDelegate* {.importcpp: "QAbstractItemDelegate",
-                          header: "qabstractitemdelegate.h", bycopy.} = object of QObject
 
-  QAbstractItemDelegateEndEditHint* {.size: sizeof(cint), importcpp: "QAbstractItemDelegate::EndEditHint",
-                                     header: "qabstractitemdelegate.h".} = enum
-    NoHint, EditNextItem, EditPreviousItem, SubmitModelCache, RevertModelCache
 
 
 proc constructQAbstractItemDelegate*(parent: ptr QObject = nil): QAbstractItemDelegate {.

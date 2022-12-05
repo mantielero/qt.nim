@@ -1,15 +1,12 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(rubberband)
 discard "forward decl of QRubberBandPrivate"
 discard "forward decl of QStyleOptionRubberBand"
-type
-  QRubberBand* {.importcpp: "QRubberBand", header: "qrubberband.h", bycopy.} = object of QWidget
 
-  QRubberBandShape* {.size: sizeof(cint), importcpp: "QRubberBand::Shape",
-                     header: "qrubberband.h".} = enum
-    Line, Rectangle
 
 
 proc constructQRubberBand*(a1: QRubberBandShape; a2: ptr QWidget = nil): QRubberBand {.

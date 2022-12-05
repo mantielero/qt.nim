@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -8,8 +10,6 @@ discard "forward decl of QLayoutItem"
 discard "forward decl of QSpacerItem"
 discard "forward decl of QWidget"
 discard "forward decl of QSize"
-type
-  QLayoutItem* {.importcpp: "QLayoutItem", header: "qlayoutitem.h", bycopy.} = object
 
 
 proc constructQLayoutItem*(alignment: Alignment = alignment()): QLayoutItem {.
@@ -53,8 +53,6 @@ proc controlTypes*(this: QLayoutItem): ControlTypes {.noSideEffect,
 ##  inline QLayoutItem::QLayoutItem(Qt::Alignment aalignment)
 ##      : align(aalignment) { }
 
-type
-  QSpacerItem* {.importcpp: "QSpacerItem", header: "qlayoutitem.h", bycopy.} = object of QLayoutItem
 
 
 proc constructQSpacerItem*(w: cint; h: cint; hData: Policy = minimum;
@@ -83,8 +81,6 @@ proc spacerItem*(this: var QSpacerItem): ptr QSpacerItem {.importcpp: "spacerIte
     header: "qlayoutitem.h".}
 proc sizePolicy*(this: QSpacerItem): QSizePolicy {.noSideEffect,
     importcpp: "sizePolicy", header: "qlayoutitem.h".}
-type
-  QWidgetItem* {.importcpp: "QWidgetItem", header: "qlayoutitem.h", bycopy.} = object of QLayoutItem
 
 
 proc constructQWidgetItem*(w: ptr QWidget): QWidgetItem {.constructor,
@@ -115,8 +111,6 @@ proc minimumHeightForWidth*(this: QWidgetItem; a2: cint): cint {.noSideEffect,
     importcpp: "minimumHeightForWidth", header: "qlayoutitem.h".}
 proc controlTypes*(this: QWidgetItem): ControlTypes {.noSideEffect,
     importcpp: "controlTypes", header: "qlayoutitem.h".}
-type
-  QWidgetItemV2* {.importcpp: "QWidgetItemV2", header: "qlayoutitem.h", bycopy.} = object of QWidgetItem
 
 
 proc constructQWidgetItemV2*(widget: ptr QWidget): QWidgetItemV2 {.constructor,

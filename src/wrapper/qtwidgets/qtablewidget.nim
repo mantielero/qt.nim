@@ -1,10 +1,9 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(tablewidget)
-type
-  QTableWidgetSelectionRange* {.importcpp: "QTableWidgetSelectionRange",
-                               header: "qtablewidget.h", bycopy.} = object
 
 
 proc constructQTableWidgetSelectionRange*(): QTableWidgetSelectionRange {.
@@ -29,13 +28,7 @@ discard "forward decl of QTableWidget"
 discard "forward decl of QTableModel"
 discard "forward decl of QWidgetItemData"
 discard "forward decl of QTableWidgetItemPrivate"
-type
-  QTableWidgetItem* {.importcpp: "QTableWidgetItem", header: "qtablewidget.h", bycopy.} = object
 
-  QTableWidgetItemItemType* {.size: sizeof(cint),
-                             importcpp: "QTableWidgetItem::ItemType",
-                             header: "qtablewidget.h".} = enum
-    Type = 0, UserType = 1000
 
 
 proc constructQTableWidgetItem*(`type`: cint = `type`): QTableWidgetItem {.
@@ -148,8 +141,6 @@ when not defined(QT_NO_DATASTREAM):
   proc `<<`*(`out`: var QDataStream; item: QTableWidgetItem): var QDataStream {.
       importcpp: "(# << #)", header: "qtablewidget.h".}
 discard "forward decl of QTableWidgetPrivate"
-type
-  QTableWidget* {.importcpp: "QTableWidget", header: "qtablewidget.h", bycopy.} = object of QTableView
 
 
 proc constructQTableWidget*(parent: ptr QWidget = nil): QTableWidget {.constructor,

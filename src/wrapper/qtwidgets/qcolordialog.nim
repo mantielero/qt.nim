@@ -1,16 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(colordialog)
 discard "forward decl of QColorDialogPrivate"
-type
-  QColorDialog* {.importcpp: "QColorDialog", header: "qcolordialog.h", bycopy.} = object of QDialog
 
-  QColorDialogColorDialogOption* {.size: sizeof(cint),
-                                  importcpp: "QColorDialog::ColorDialogOption",
-                                  header: "qcolordialog.h".} = enum
-    ShowAlphaChannel = 0x00000001, NoButtons = 0x00000002,
-    DontUseNativeDialog = 0x00000004
 
 
 proc constructQColorDialog*(parent: ptr QWidget = nil): QColorDialog {.constructor,

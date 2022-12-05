@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,12 +7,7 @@ qt_Require_Config(toolbutton)
 discard "forward decl of QToolButtonPrivate"
 discard "forward decl of QMenu"
 discard "forward decl of QStyleOptionToolButton"
-type
-  QToolButton* {.importcpp: "QToolButton", header: "qtoolbutton.h", bycopy.} = object of QAbstractButton
 
-  QToolButtonToolButtonPopupMode* {.size: sizeof(cint), importcpp: "QToolButton::ToolButtonPopupMode",
-                                   header: "qtoolbutton.h".} = enum
-    DelayedPopup, MenuButtonPopup, InstantPopup
 
 
 proc constructQToolButton*(parent: ptr QWidget = nil): QToolButton {.constructor,

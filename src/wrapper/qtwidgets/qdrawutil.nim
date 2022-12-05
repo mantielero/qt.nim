@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -44,10 +46,6 @@ proc qDrawPlainRect*(p: ptr QPainter; x: cint; y: cint; w: cint; h: cint; a6: QC
 proc qDrawPlainRect*(p: ptr QPainter; r: QRect; a3: QColor; lineWidth: cint = 1;
                     fill: ptr QBrush = nil) {.importcpp: "qDrawPlainRect(@)",
     header: "qdrawutil.h".}
-type
-  QTileRules* {.importcpp: "QTileRules", header: "qdrawutil.h", bycopy.} = object
-    horizontal* {.importc: "horizontal".}: TileRule
-    vertical* {.importc: "vertical".}: TileRule
 
 
 proc constructQTileRules*(horizontalRule: TileRule; verticalRule: TileRule): QTileRules {.
@@ -56,16 +54,6 @@ proc constructQTileRules*(rule: TileRule = stretchTile): QTileRules {.constructo
     importcpp: "QTileRules(@)", header: "qdrawutil.h".}
 ##  For internal use only.
 
-type
-  DrawingHint* {.size: sizeof(cint), importcpp: "QDrawBorderPixmap::DrawingHint",
-                header: "qdrawutil.h".} = enum
-    OpaqueTopLeft = 0x0001, OpaqueTop = 0x0002, OpaqueTopRight = 0x0004,
-    OpaqueLeft = 0x0008, OpaqueCenter = 0x0010, OpaqueRight = 0x0020,
-    OpaqueBottomLeft = 0x0040, OpaqueBottom = 0x0080, OpaqueBottomRight = 0x0100, OpaqueCorners = opaqueTopLeft or
-        opaqueTopRight or opaqueBottomLeft or opaqueBottomRight,
-    OpaqueEdges = opaqueTop or opaqueLeft or opaqueRight or opaqueBottom,
-    OpaqueFrame = opaqueCorners or opaqueEdges,
-    OpaqueAll = opaqueCenter or opaqueFrame
 
 
 proc qDrawBorderPixmap*(painter: ptr QPainter; targetRect: QRect;
@@ -77,3 +65,4 @@ proc qDrawBorderPixmap*(painter: ptr QPainter; targetRect: QRect;
 proc qDrawBorderPixmap*(painter: ptr QPainter; target: QRect; margins: QMargins;
                        pixmap: QPixmap) =
   discard
+

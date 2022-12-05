@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -13,9 +15,6 @@ when defined(qApp):
 const
   qApp* = (staticCast[ptr QApplication](instance()))
 
-type
-  QApplication* {.importcpp: "QApplication", header: "qapplication.h", bycopy.} = object of QGuiApplication
-    qApplication* {.importc: "QApplication".}: Qt_Declare_Native_Interface_Accessor
 
 
 when defined(Q_QDOC):

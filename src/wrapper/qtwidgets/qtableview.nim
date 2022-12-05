@@ -1,11 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(tableview)
 discard "forward decl of QHeaderView"
 discard "forward decl of QTableViewPrivate"
-type
-  QTableView* {.importcpp: "QTableView", header: "qtableview.h", bycopy.} = object of QAbstractItemView
 
 
 proc constructQTableView*(parent: ptr QWidget = nil): QTableView {.constructor,

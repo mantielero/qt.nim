@@ -1,21 +1,17 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(dialog)
 discard "forward decl of QPushButton"
 discard "forward decl of QDialogPrivate"
-type
-  QDialog* {.importcpp: "QDialog", header: "qdialog.h", bycopy.} = object of QWidget
 
 
 proc constructQDialog*(parent: ptr QWidget = nil; f: WindowFlags = windowFlags()): QDialog {.
     constructor, importcpp: "QDialog(@)", header: "qdialog.h".}
 proc destroyQDialog*(this: var QDialog) {.importcpp: "#.~QDialog()",
                                       header: "qdialog.h".}
-type
-  QDialogDialogCode* {.size: sizeof(cint), importcpp: "QDialog::DialogCode",
-                      header: "qdialog.h".} = enum
-    Rejected, Accepted
 
 
 proc result*(this: QDialog): cint {.noSideEffect, importcpp: "result",

@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -6,20 +8,9 @@ discard "forward decl of QCompleterPrivate"
 discard "forward decl of QAbstractItemView"
 discard "forward decl of QAbstractProxyModel"
 discard "forward decl of QWidget"
-type
-  QCompleter* {.importcpp: "QCompleter", header: "qcompleter.h", bycopy.} = object of QObject
-
-  QCompleterCompletionMode* {.size: sizeof(cint),
-                             importcpp: "QCompleter::CompletionMode",
-                             header: "qcompleter.h".} = enum
-    PopupCompletion, UnfilteredPopupCompletion, InlineCompletion
 
 
-type
-  QCompleterModelSorting* {.size: sizeof(cint),
-                           importcpp: "QCompleter::ModelSorting",
-                           header: "qcompleter.h".} = enum
-    UnsortedModel = 0, CaseSensitivelySortedModel, CaseInsensitivelySortedModel
+
 
 
 proc constructQCompleter*(parent: ptr QObject = nil): QCompleter {.constructor,

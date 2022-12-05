@@ -1,10 +1,10 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(lcdnumber)
 discard "forward decl of QLCDNumberPrivate"
-type
-  QLCDNumber* {.importcpp: "QLCDNumber", header: "qlcdnumber.h", bycopy.} = object of QFrame ##  LCD number widget
 
 
 proc constructQLCDNumber*(parent: ptr QWidget = nil): QLCDNumber {.constructor,
@@ -13,17 +13,8 @@ proc constructQLCDNumber*(numDigits: uint; parent: ptr QWidget = nil): QLCDNumbe
     constructor, importcpp: "QLCDNumber(@)", header: "qlcdnumber.h".}
 proc destroyQLCDNumber*(this: var QLCDNumber) {.importcpp: "#.~QLCDNumber()",
     header: "qlcdnumber.h".}
-type
-  QLCDNumberMode* {.size: sizeof(cint), importcpp: "QLCDNumber::Mode",
-                   header: "qlcdnumber.h".} = enum
-    Hex, Dec, Oct, Bin
 
 
-type
-  QLCDNumberSegmentStyle* {.size: sizeof(cint),
-                           importcpp: "QLCDNumber::SegmentStyle",
-                           header: "qlcdnumber.h".} = enum
-    Outline, Filled, Flat
 
 
 proc smallDecimalPoint*(this: QLCDNumber): bool {.noSideEffect,

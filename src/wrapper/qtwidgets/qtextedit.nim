@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2019 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -9,21 +11,9 @@ discard "forward decl of QTextEditPrivate"
 discard "forward decl of QMimeData"
 discard "forward decl of QPagedPaintDevice"
 discard "forward decl of QRegularExpression"
-type
-  QTextEdit* {.importcpp: "QTextEdit", header: "qtextedit.h", bycopy.} = object of QAbstractScrollArea
-    autoFormatting* {.importc: "AutoFormatting".}: Q_Flag
-
-  QTextEditLineWrapMode* {.size: sizeof(cint),
-                          importcpp: "QTextEdit::LineWrapMode",
-                          header: "qtextedit.h".} = enum
-    NoWrap, WidgetWidth, FixedPixelWidth, FixedColumnWidth
 
 
-type
-  QTextEditAutoFormattingFlag* {.size: sizeof(cint),
-                                importcpp: "QTextEdit::AutoFormattingFlag",
-                                header: "qtextedit.h".} = enum
-    AutoNone = 0, AutoBulletList = 0x00000001, AutoAll = 0xffffffff
+
 
 
 proc constructQTextEdit*(parent: ptr QWidget = nil): QTextEdit {.constructor,
@@ -150,11 +140,6 @@ proc acceptRichText*(this: QTextEdit): bool {.noSideEffect,
     importcpp: "acceptRichText", header: "qtextedit.h".}
 proc setAcceptRichText*(this: var QTextEdit; accept: bool) {.
     importcpp: "setAcceptRichText", header: "qtextedit.h".}
-type
-  QTextEditExtraSelection* {.importcpp: "QTextEdit::ExtraSelection",
-                            header: "qtextedit.h", bycopy.} = object
-    cursor* {.importc: "cursor".}: QTextCursor
-    format* {.importc: "format".}: QTextCharFormat
 
 
 proc setExtraSelections*(this: var QTextEdit;

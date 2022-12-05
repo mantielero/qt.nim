@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -40,36 +42,10 @@ discard "forward decl of QUnifiedToolbarSurface"
 discard "forward decl of QPixmap"
 when not defined(QT_NO_DEBUG_STREAM):
   discard "forward decl of QDebug"
-type
-  QWidgetData* {.importcpp: "QWidgetData", header: "qwidget.h", bycopy.} = object
-    winid* {.importc: "winid".}: WId
-    widgetAttributes* {.importc: "widget_attributes".}: uint
-    windowFlags* {.importc: "window_flags".}: WindowFlags
-    windowState* {.importc: "window_state".} {.bitsize: 4.}: uint
-    focusPolicy* {.importc: "focus_policy".} {.bitsize: 4.}: uint
-    sizehintForced* {.importc: "sizehint_forced".} {.bitsize: 1.}: uint
-    isClosing* {.importc: "is_closing".} {.bitsize: 1.}: uint
-    inShow* {.importc: "in_show".} {.bitsize: 1.}: uint
-    inSetWindowState* {.importc: "in_set_window_state".} {.bitsize: 1.}: uint
-    fstrutDirty* {.importc: "fstrut_dirty".} {.bitsize: 1.}: uint
-    contextMenuPolicy* {.importc: "context_menu_policy".} {.bitsize: 3.}: uint
-    windowModality* {.importc: "window_modality".} {.bitsize: 2.}: uint
-    inDestructor* {.importc: "in_destructor".} {.bitsize: 1.}: uint
-    unused* {.importc: "unused".} {.bitsize: 13.}: uint
-    crect* {.importc: "crect".}: QRect
-    pal* {.importc: "pal".}: QPalette
-    fnt* {.importc: "fnt".}: QFont
-    wrect* {.importc: "wrect".}: QRect
 
 
 discard "forward decl of QWidgetPrivate"
-type
-  QWidget* {.importcpp: "QWidget", header: "qwidget.h", bycopy.} = object of QObject ##  Widget management functions
-                                                                           ##  Event handlers
 
-  QWidgetRenderFlag* {.size: sizeof(cint), importcpp: "QWidget::RenderFlag",
-                      header: "qwidget.h".} = enum
-    DrawWindowBackground = 0x1, DrawChildren = 0x2, IgnoreMask = 0x4
 
 
 proc constructQWidget*(parent: ptr QWidget = nil; f: WindowFlags = windowFlags()): QWidget {.

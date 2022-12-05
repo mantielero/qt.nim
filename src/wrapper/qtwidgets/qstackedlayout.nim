@@ -1,14 +1,10 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 discard "forward decl of QStackedLayoutPrivate"
-type
-  QStackedLayout* {.importcpp: "QStackedLayout", header: "qstackedlayout.h", bycopy.} = object of QLayout
 
-  QStackedLayoutStackingMode* {.size: sizeof(cint),
-                               importcpp: "QStackedLayout::StackingMode",
-                               header: "qstackedlayout.h".} = enum
-    StackOne, StackAll
 
 
 proc constructQStackedLayout*(): QStackedLayout {.constructor,

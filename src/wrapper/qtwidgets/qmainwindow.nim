@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -8,30 +10,7 @@ discard "forward decl of QMenuBar"
 discard "forward decl of QStatusBar"
 discard "forward decl of QToolBar"
 discard "forward decl of QMenu"
-type
-  QMainWindow* {.importcpp: "QMainWindow", header: "qmainwindow.h", bycopy.} = object of QWidget ##  #if QT_CONFIG(dockwidget)
-                                                                                       ##      Q_PROPERTY(bool animated READ isAnimated WRITE setAnimated)
-                                                                                       ##  #if QT_CONFIG(tabbar)
-                                                                                       ##      Q_PROPERTY(bool documentMode READ documentMode WRITE setDocumentMode)
-                                                                                       ##  #endif // QT_CONFIG(tabbar)
-                                                                                       ##  #if QT_CONFIG(tabwidget)
-                                                                                       ##      Q_PROPERTY(QTabWidget::TabShape tabShape READ tabShape WRITE setTabShape)
-                                                                                       ##  #endif // QT_CONFIG(tabwidget)
-                                                                                       ##      Q_PROPERTY(bool dockNestingEnabled READ isDockNestingEnabled WRITE setDockNestingEnabled)
-                                                                                       ##  #endif // QT_CONFIG(dockwidget)
-                                                                                       ##      Q_PROPERTY(DockOptions dockOptions READ dockOptions WRITE setDockOptions)
-                                                                                       ##  #if QT_CONFIG(toolbar)
-                                                                                       ##      Q_PROPERTY(bool unifiedTitleAndToolBarOnMac READ unifiedTitleAndToolBarOnMac
-                                                                                       ##                 WRITE setUnifiedTitleAndToolBarOnMac)
-                                                                                       ##  #endif
-    dockOptions* {.importc: "DockOptions".}: Q_Flag
 
-  QMainWindowDockOption* {.size: sizeof(cint),
-                          importcpp: "QMainWindow::DockOption",
-                          header: "qmainwindow.h".} = enum
-    AnimatedDocks = 0x01, AllowNestedDocks = 0x02, AllowTabbedDocks = 0x04, ForceTabbedDocks = 0x08, ##  implies AllowTabbedDocks, !AllowNestedDocks
-    VerticalTabs = 0x10,        ##  implies AllowTabbedDocks
-    GroupedDragging = 0x20
 
 
 proc constructQMainWindow*(parent: ptr QWidget = nil;

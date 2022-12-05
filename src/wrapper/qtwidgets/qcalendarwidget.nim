@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2020 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,27 +7,11 @@ qt_Require_Config(calendarwidget)
 discard "forward decl of QDate"
 discard "forward decl of QTextCharFormat"
 discard "forward decl of QCalendarWidgetPrivate"
-type
-  QCalendarWidget* {.importcpp: "QCalendarWidget", header: "qcalendarwidget.h",
-                    bycopy.} = object of QWidget
-
-  QCalendarWidgetHorizontalHeaderFormat* {.size: sizeof(cint),
-      importcpp: "QCalendarWidget::HorizontalHeaderFormat",
-      header: "qcalendarwidget.h".} = enum
-    NoHorizontalHeader, SingleLetterDayNames, ShortDayNames, LongDayNames
 
 
-type
-  QCalendarWidgetVerticalHeaderFormat* {.size: sizeof(cint), importcpp: "QCalendarWidget::VerticalHeaderFormat",
-                                        header: "qcalendarwidget.h".} = enum
-    NoVerticalHeader, ISOWeekNumbers
 
 
-type
-  QCalendarWidgetSelectionMode* {.size: sizeof(cint),
-                                 importcpp: "QCalendarWidget::SelectionMode",
-                                 header: "qcalendarwidget.h".} = enum
-    NoSelection, SingleSelection
+
 
 
 proc constructQCalendarWidget*(parent: ptr QWidget = nil): QCalendarWidget {.

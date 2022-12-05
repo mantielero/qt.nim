@@ -1,35 +1,17 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(formlayout)
 discard "forward decl of QFormLayoutPrivate"
-type
-  QFormLayout* {.importcpp: "QFormLayout", header: "qformlayout.h", bycopy.} = object of QLayout
-
-  QFormLayoutFieldGrowthPolicy* {.size: sizeof(cint),
-                                 importcpp: "QFormLayout::FieldGrowthPolicy",
-                                 header: "qformlayout.h".} = enum
-    FieldsStayAtSizeHint, ExpandingFieldsGrow, AllNonFixedFieldsGrow
 
 
-type
-  QFormLayoutRowWrapPolicy* {.size: sizeof(cint),
-                             importcpp: "QFormLayout::RowWrapPolicy",
-                             header: "qformlayout.h".} = enum
-    DontWrapRows, WrapLongRows, WrapAllRows
 
 
-type
-  QFormLayoutItemRole* {.size: sizeof(cint), importcpp: "QFormLayout::ItemRole",
-                        header: "qformlayout.h".} = enum
-    LabelRole = 0, FieldRole = 1, SpanningRole = 2
 
 
-type
-  QFormLayoutTakeRowResult* {.importcpp: "QFormLayout::TakeRowResult",
-                             header: "qformlayout.h", bycopy.} = object
-    labelItem* {.importc: "labelItem".}: ptr QLayoutItem
-    fieldItem* {.importc: "fieldItem".}: ptr QLayoutItem
+
 
 
 proc constructQFormLayout*(parent: ptr QWidget = nil): QFormLayout {.constructor,

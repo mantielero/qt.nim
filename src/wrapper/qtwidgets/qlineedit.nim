@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -11,13 +13,7 @@ discard "forward decl of QAbstractSpinBox"
 discard "forward decl of QDateTimeEdit"
 discard "forward decl of QIcon"
 discard "forward decl of QToolButton"
-type
-  QLineEdit* {.importcpp: "QLineEdit", header: "qlineedit.h", bycopy.} = object of QWidget
 
-  QLineEditActionPosition* {.size: sizeof(cint),
-                            importcpp: "QLineEdit::ActionPosition",
-                            header: "qlineedit.h".} = enum
-    LeadingPosition, TrailingPosition
 
 
 proc constructQLineEdit*(parent: ptr QWidget = nil): QLineEdit {.constructor,
@@ -46,10 +42,6 @@ proc setClearButtonEnabled*(this: var QLineEdit; enable: bool) {.
     importcpp: "setClearButtonEnabled", header: "qlineedit.h".}
 proc isClearButtonEnabled*(this: QLineEdit): bool {.noSideEffect,
     importcpp: "isClearButtonEnabled", header: "qlineedit.h".}
-type
-  QLineEditEchoMode* {.size: sizeof(cint), importcpp: "QLineEdit::EchoMode",
-                      header: "qlineedit.h".} = enum
-    Normal, NoEcho, Password, PasswordEchoOnEdit
 
 
 proc echoMode*(this: QLineEdit): QLineEditEchoMode {.noSideEffect,

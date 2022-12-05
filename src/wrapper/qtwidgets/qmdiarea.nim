@@ -1,27 +1,16 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(mdiarea)
 discard "forward decl of QMdiSubWindow"
 discard "forward decl of QMdiAreaPrivate"
-type
-  QMdiArea* {.importcpp: "QMdiArea", header: "qmdiarea.h", bycopy.} = object of QAbstractScrollArea
-
-  QMdiAreaAreaOption* {.size: sizeof(cint), importcpp: "QMdiArea::AreaOption",
-                       header: "qmdiarea.h".} = enum
-    DontMaximizeSubWindowOnActivation = 0x1
 
 
-type
-  QMdiAreaWindowOrder* {.size: sizeof(cint), importcpp: "QMdiArea::WindowOrder",
-                        header: "qmdiarea.h".} = enum
-    CreationOrder, StackingOrder, ActivationHistoryOrder
 
 
-type
-  QMdiAreaViewMode* {.size: sizeof(cint), importcpp: "QMdiArea::ViewMode",
-                     header: "qmdiarea.h".} = enum
-    SubWindowView, TabbedView
+
 
 
 proc constructQMdiArea*(parent: ptr QWidget = nil): QMdiArea {.constructor,

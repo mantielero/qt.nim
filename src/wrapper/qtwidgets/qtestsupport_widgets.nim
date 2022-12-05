@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2018 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -11,9 +13,6 @@ proc qWaitForWindowActive*(widget: ptr QWidget; timeout: cint = 5000): bool {.
 
 proc qWaitForWindowExposed*(widget: ptr QWidget; timeout: cint = 5000): bool {.
     importcpp: "QTest::qWaitForWindowExposed(@)", header: "qtestsupport_widgets.h".}
-type
-  QTouchEventWidgetSequence* {.importcpp: "QTest::QTouchEventWidgetSequence",
-                              header: "qtestsupport_widgets.h", bycopy.} = object of QTouchEventSequence
 
 
 proc destroyQTouchEventWidgetSequence*(this: var QTouchEventWidgetSequence) {.
@@ -32,3 +31,4 @@ proc stationary*(this: var QTouchEventWidgetSequence; touchId: cint): var QTouch
 proc commit*(this: var QTouchEventWidgetSequence; processEvents: bool = true): bool {.
     importcpp: "commit", header: "qtestsupport_widgets.h".}
 ##  namespace QTest
+

@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -7,26 +9,11 @@ discard "forward decl of QScrollerPrivate"
 discard "forward decl of QScrollerProperties"
 discard "forward decl of QFlickGestureRecognizer"
 discard "forward decl of QMouseFlickGestureRecognizer"
-type
-  QScroller* {.importcpp: "QScroller", header: "qscroller.h", bycopy.} = object of QObject
-
-  QScrollerState* {.size: sizeof(cint), importcpp: "QScroller::State",
-                   header: "qscroller.h".} = enum
-    Inactive, Pressed, Dragging, Scrolling
 
 
-type
-  QScrollerScrollerGestureType* {.size: sizeof(cint),
-                                 importcpp: "QScroller::ScrollerGestureType",
-                                 header: "qscroller.h".} = enum
-    TouchGesture, LeftMouseButtonGesture, RightMouseButtonGesture,
-    MiddleMouseButtonGesture
 
 
-type
-  QScrollerInput* {.size: sizeof(cint), importcpp: "QScroller::Input",
-                   header: "qscroller.h".} = enum
-    InputPress = 1, InputMove, InputRelease
+
 
 
 proc hasScroller*(target: ptr QObject): bool {.

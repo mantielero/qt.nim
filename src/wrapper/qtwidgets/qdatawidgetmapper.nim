@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -9,9 +11,6 @@ discard "forward decl of QAbstractItemDelegate"
 discard "forward decl of QAbstractItemModel"
 discard "forward decl of QModelIndex"
 discard "forward decl of QDataWidgetMapperPrivate"
-type
-  QDataWidgetMapper* {.importcpp: "QDataWidgetMapper",
-                      header: "qdatawidgetmapper.h", bycopy.} = object of QObject
 
 
 proc constructQDataWidgetMapper*(parent: ptr QObject = nil): QDataWidgetMapper {.
@@ -35,11 +34,6 @@ proc setOrientation*(this: var QDataWidgetMapper; aOrientation: Orientation) {.
     importcpp: "setOrientation", header: "qdatawidgetmapper.h".}
 proc orientation*(this: QDataWidgetMapper): Orientation {.noSideEffect,
     importcpp: "orientation", header: "qdatawidgetmapper.h".}
-type
-  QDataWidgetMapperSubmitPolicy* {.size: sizeof(cint),
-                                  importcpp: "QDataWidgetMapper::SubmitPolicy",
-                                  header: "qdatawidgetmapper.h".} = enum
-    AutoSubmit, ManualSubmit
 
 
 proc setSubmitPolicy*(this: var QDataWidgetMapper;

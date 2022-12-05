@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,44 +7,16 @@ qt_Require_Config(wizard)
 discard "forward decl of QAbstractButton"
 discard "forward decl of QWizardPage"
 discard "forward decl of QWizardPrivate"
-type
-  QWizard* {.importcpp: "QWizard", header: "qwizard.h", bycopy.} = object of QDialog
-    wizardOptions* {.importc: "WizardOptions".}: Q_Flag
 
-  QWizardWizardButton* {.size: sizeof(cint), importcpp: "QWizard::WizardButton",
-                        header: "qwizard.h".} = enum
-    NoButton = -1, BackButton, NextButton, CommitButton, FinishButton, CancelButton,
-    HelpButton, CustomButton1, CustomButton2, CustomButton3, Stretch
 
 const
   NStandardButtons = HelpButton
   NButtons = CustomButton3
 
-type
-  QWizardWizardPixmap* {.size: sizeof(cint), importcpp: "QWizard::WizardPixmap",
-                        header: "qwizard.h".} = enum
-    WatermarkPixmap, LogoPixmap, BannerPixmap, BackgroundPixmap, NPixmaps
 
 
-type
-  QWizardWizardStyle* {.size: sizeof(cint), importcpp: "QWizard::WizardStyle",
-                       header: "qwizard.h".} = enum
-    ClassicStyle, ModernStyle, MacStyle, AeroStyle, NStyles
 
 
-type
-  QWizardWizardOption* {.size: sizeof(cint), importcpp: "QWizard::WizardOption",
-                        header: "qwizard.h".} = enum
-    IndependentPages = 0x00000001, IgnoreSubTitles = 0x00000002,
-    ExtendedWatermarkPixmap = 0x00000004, NoDefaultButton = 0x00000008,
-    NoBackButtonOnStartPage = 0x00000010, NoBackButtonOnLastPage = 0x00000020,
-    DisabledBackButtonOnLastPage = 0x00000040,
-    HaveNextButtonOnLastPage = 0x00000080,
-    HaveFinishButtonOnEarlyPages = 0x00000100, NoCancelButton = 0x00000200,
-    CancelButtonOnLeft = 0x00000400, HaveHelpButton = 0x00000800,
-    HelpButtonOnRight = 0x00001000, HaveCustomButton1 = 0x00002000,
-    HaveCustomButton2 = 0x00004000, HaveCustomButton3 = 0x00008000,
-    NoCancelButtonOnLastPage = 0x00010000
 
 
 proc constructQWizard*(parent: ptr QWidget = nil; flags: WindowFlags = windowFlags()): QWizard {.
@@ -131,8 +105,6 @@ proc setCurrentId*(this: var QWizard; id: cint) {.importcpp: "setCurrentId",
     header: "qwizard.h".}
 proc restart*(this: var QWizard) {.importcpp: "restart", header: "qwizard.h".}
 discard "forward decl of QWizardPagePrivate"
-type
-  QWizardPage* {.importcpp: "QWizardPage", header: "qwizard.h", bycopy.} = object of QWidget
 
 
 proc constructQWizardPage*(parent: ptr QWidget = nil): QWizardPage {.constructor,

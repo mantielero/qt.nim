@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -6,8 +8,6 @@ discard "forward decl of QMenuBarPrivate"
 discard "forward decl of QStyleOptionMenuItem"
 discard "forward decl of QWindowsStyle"
 discard "forward decl of QPlatformMenuBar"
-type
-  QMenuBar* {.importcpp: "QMenuBar", header: "qmenubar.h", bycopy.} = object of QWidget
 
 
 proc constructQMenuBar*(parent: ptr QWidget = nil): QMenuBar {.constructor,

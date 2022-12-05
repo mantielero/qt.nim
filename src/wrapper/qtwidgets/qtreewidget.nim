@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -6,16 +8,7 @@ discard "forward decl of QTreeWidget"
 discard "forward decl of QTreeModel"
 discard "forward decl of QWidgetItemData"
 discard "forward decl of QTreeWidgetItemPrivate"
-type
-  QTreeWidgetItem* {.importcpp: "QTreeWidgetItem", header: "qtreewidget.h", bycopy.} = object
-    ##  One item has a vector of column entries. Each column has a vector of (role, value) pairs.
-    ##  ### Qt7: Move children to d-pointer and replace QList by a suitable data structure.
-    ##           to fix QTBUG-94546
 
-  QTreeWidgetItemItemType* {.size: sizeof(cint),
-                            importcpp: "QTreeWidgetItem::ItemType",
-                            header: "qtreewidget.h".} = enum
-    Type = 0, UserType = 1000
 
 
 proc constructQTreeWidgetItem*(`type`: cint = `type`): QTreeWidgetItem {.constructor,
@@ -66,10 +59,6 @@ proc setDisabled*(this: var QTreeWidgetItem; disabled: bool) {.
     importcpp: "setDisabled", header: "qtreewidget.h".}
 proc isDisabled*(this: QTreeWidgetItem): bool {.noSideEffect,
     importcpp: "isDisabled", header: "qtreewidget.h".}
-type
-  QTreeWidgetItemChildIndicatorPolicy* {.size: sizeof(cint), importcpp: "QTreeWidgetItem::ChildIndicatorPolicy",
-                                        header: "qtreewidget.h".} = enum
-    ShowIndicator, DontShowIndicator, DontShowIndicatorWhenChildless
 
 
 proc setChildIndicatorPolicy*(this: var QTreeWidgetItem;
@@ -195,8 +184,6 @@ when not defined(QT_NO_DATASTREAM):
   proc `>>`*(`in`: var QDataStream; item: var QTreeWidgetItem): var QDataStream {.
       importcpp: "(# >> #)", header: "qtreewidget.h".}
 discard "forward decl of QTreeWidgetPrivate"
-type
-  QTreeWidget* {.importcpp: "QTreeWidget", header: "qtreewidget.h", bycopy.} = object of QTreeView
 
 
 proc constructQTreeWidget*(parent: ptr QWidget = nil): QTreeWidget {.constructor,

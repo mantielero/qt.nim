@@ -1,11 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(groupbox)
 discard "forward decl of QGroupBoxPrivate"
 discard "forward decl of QStyleOptionGroupBox"
-type
-  QGroupBox* {.importcpp: "QGroupBox", header: "qgroupbox.h", bycopy.} = object of QWidget
 
 
 proc constructQGroupBox*(parent: ptr QWidget = nil): QGroupBox {.constructor,

@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,36 +7,20 @@ qt_Require_Config(spinbox)
 discard "forward decl of QLineEdit"
 discard "forward decl of QAbstractSpinBoxPrivate"
 discard "forward decl of QStyleOptionSpinBox"
-type
-  QAbstractSpinBox* {.importcpp: "QAbstractSpinBox", header: "qabstractspinbox.h",
-                     bycopy.} = object of QWidget
 
 
 proc constructQAbstractSpinBox*(parent: ptr QWidget = nil): QAbstractSpinBox {.
     constructor, importcpp: "QAbstractSpinBox(@)", header: "qabstractspinbox.h".}
 proc destroyQAbstractSpinBox*(this: var QAbstractSpinBox) {.
     importcpp: "#.~QAbstractSpinBox()", header: "qabstractspinbox.h".}
-type
-  QAbstractSpinBoxStepEnabledFlag* {.size: sizeof(cint), importcpp: "QAbstractSpinBox::StepEnabledFlag",
-                                    header: "qabstractspinbox.h".} = enum
-    StepNone = 0x00, StepUpEnabled = 0x01, StepDownEnabled = 0x02
 
 
-type
-  QAbstractSpinBoxButtonSymbols* {.size: sizeof(cint),
-                                  importcpp: "QAbstractSpinBox::ButtonSymbols",
-                                  header: "qabstractspinbox.h".} = enum
-    UpDownArrows, PlusMinus, NoButtons
 
 
 proc buttonSymbols*(this: QAbstractSpinBox): QAbstractSpinBoxButtonSymbols {.
     noSideEffect, importcpp: "buttonSymbols", header: "qabstractspinbox.h".}
 proc setButtonSymbols*(this: var QAbstractSpinBox; bs: QAbstractSpinBoxButtonSymbols) {.
     importcpp: "setButtonSymbols", header: "qabstractspinbox.h".}
-type
-  QAbstractSpinBoxCorrectionMode* {.size: sizeof(cint), importcpp: "QAbstractSpinBox::CorrectionMode",
-                                   header: "qabstractspinbox.h".} = enum
-    CorrectToPreviousValue, CorrectToNearestValue
 
 
 proc setCorrectionMode*(this: var QAbstractSpinBox;
@@ -94,11 +80,6 @@ proc fixup*(this: QAbstractSpinBox; input: var QString) {.noSideEffect,
     importcpp: "fixup", header: "qabstractspinbox.h".}
 proc stepBy*(this: var QAbstractSpinBox; steps: cint) {.importcpp: "stepBy",
     header: "qabstractspinbox.h".}
-type
-  QAbstractSpinBoxStepType* {.size: sizeof(cint),
-                             importcpp: "QAbstractSpinBox::StepType",
-                             header: "qabstractspinbox.h".} = enum
-    DefaultStepType, AdaptiveDecimalStepType
 
 
 proc stepUp*(this: var QAbstractSpinBox) {.importcpp: "stepUp",

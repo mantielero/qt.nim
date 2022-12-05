@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -7,9 +9,6 @@ discard "forward decl of QPointF"
 discard "forward decl of QSizeF"
 discard "forward decl of QWidget"
 discard "forward decl of QGraphicsSceneEventPrivate"
-type
-  QGraphicsSceneEvent* {.importcpp: "QGraphicsSceneEvent",
-                        header: "qgraphicssceneevent.h", bycopy.} = object of QEvent
 
 
 proc constructQGraphicsSceneEvent*(`type`: Type): QGraphicsSceneEvent {.constructor,
@@ -25,9 +24,6 @@ proc timestamp*(this: QGraphicsSceneEvent): Quint64 {.noSideEffect,
 proc setTimestamp*(this: var QGraphicsSceneEvent; ts: Quint64) {.
     importcpp: "setTimestamp", header: "qgraphicssceneevent.h".}
 discard "forward decl of QGraphicsSceneMouseEventPrivate"
-type
-  QGraphicsSceneMouseEvent* {.importcpp: "QGraphicsSceneMouseEvent",
-                             header: "qgraphicssceneevent.h", bycopy.} = object of QGraphicsSceneEvent
 
 
 proc constructQGraphicsSceneMouseEvent*(`type`: Type = none): QGraphicsSceneMouseEvent {.
@@ -95,9 +91,6 @@ proc flags*(this: QGraphicsSceneMouseEvent): MouseEventFlags {.noSideEffect,
 proc setFlags*(this: var QGraphicsSceneMouseEvent; a2: MouseEventFlags) {.
     importcpp: "setFlags", header: "qgraphicssceneevent.h".}
 discard "forward decl of QGraphicsSceneWheelEventPrivate"
-type
-  QGraphicsSceneWheelEvent* {.importcpp: "QGraphicsSceneWheelEvent",
-                             header: "qgraphicssceneevent.h", bycopy.} = object of QGraphicsSceneEvent
 
 
 proc constructQGraphicsSceneWheelEvent*(`type`: Type = none): QGraphicsSceneWheelEvent {.
@@ -146,14 +139,7 @@ proc isInverted*(this: QGraphicsSceneWheelEvent): bool {.noSideEffect,
 proc setInverted*(this: var QGraphicsSceneWheelEvent; inverted: bool) {.
     importcpp: "setInverted", header: "qgraphicssceneevent.h".}
 discard "forward decl of QGraphicsSceneContextMenuEventPrivate"
-type
-  QGraphicsSceneContextMenuEvent* {.importcpp: "QGraphicsSceneContextMenuEvent",
-                                   header: "qgraphicssceneevent.h", bycopy.} = object of QGraphicsSceneEvent
 
-  QGraphicsSceneContextMenuEventReason* {.size: sizeof(cint),
-      importcpp: "QGraphicsSceneContextMenuEvent::Reason",
-      header: "qgraphicssceneevent.h".} = enum
-    Mouse, Keyboard, Other
 
 
 proc constructQGraphicsSceneContextMenuEvent*(`type`: Type = none): QGraphicsSceneContextMenuEvent {.
@@ -186,9 +172,6 @@ proc setReason*(this: var QGraphicsSceneContextMenuEvent;
                reason: QGraphicsSceneContextMenuEventReason) {.
     importcpp: "setReason", header: "qgraphicssceneevent.h".}
 discard "forward decl of QGraphicsSceneHoverEventPrivate"
-type
-  QGraphicsSceneHoverEvent* {.importcpp: "QGraphicsSceneHoverEvent",
-                             header: "qgraphicssceneevent.h", bycopy.} = object of QGraphicsSceneEvent
 
 
 proc constructQGraphicsSceneHoverEvent*(`type`: Type = none): QGraphicsSceneHoverEvent {.
@@ -225,9 +208,6 @@ proc modifiers*(this: QGraphicsSceneHoverEvent): KeyboardModifiers {.noSideEffec
 proc setModifiers*(this: var QGraphicsSceneHoverEvent; modifiers: KeyboardModifiers) {.
     importcpp: "setModifiers", header: "qgraphicssceneevent.h".}
 discard "forward decl of QGraphicsSceneHelpEventPrivate"
-type
-  QGraphicsSceneHelpEvent* {.importcpp: "QGraphicsSceneHelpEvent",
-                            header: "qgraphicssceneevent.h", bycopy.} = object of QGraphicsSceneEvent
 
 
 proc constructQGraphicsSceneHelpEvent*(`type`: Type = none): QGraphicsSceneHelpEvent {.
@@ -244,9 +224,6 @@ proc screenPos*(this: QGraphicsSceneHelpEvent): QPoint {.noSideEffect,
 proc setScreenPos*(this: var QGraphicsSceneHelpEvent; pos: QPoint) {.
     importcpp: "setScreenPos", header: "qgraphicssceneevent.h".}
 discard "forward decl of QGraphicsSceneDragDropEventPrivate"
-type
-  QGraphicsSceneDragDropEvent* {.importcpp: "QGraphicsSceneDragDropEvent",
-                                header: "qgraphicssceneevent.h", bycopy.} = object of QGraphicsSceneEvent
 
 
 proc constructQGraphicsSceneDragDropEvent*(`type`: Type = none): QGraphicsSceneDragDropEvent {.
@@ -298,9 +275,6 @@ proc mimeData*(this: QGraphicsSceneDragDropEvent): ptr QMimeData {.noSideEffect,
 proc setMimeData*(this: var QGraphicsSceneDragDropEvent; data: ptr QMimeData) {.
     importcpp: "setMimeData", header: "qgraphicssceneevent.h".}
 discard "forward decl of QGraphicsSceneResizeEventPrivate"
-type
-  QGraphicsSceneResizeEvent* {.importcpp: "QGraphicsSceneResizeEvent",
-                              header: "qgraphicssceneevent.h", bycopy.} = object of QGraphicsSceneEvent
 
 
 proc constructQGraphicsSceneResizeEvent*(): QGraphicsSceneResizeEvent {.
@@ -317,9 +291,6 @@ proc newSize*(this: QGraphicsSceneResizeEvent): QSizeF {.noSideEffect,
 proc setNewSize*(this: var QGraphicsSceneResizeEvent; size: QSizeF) {.
     importcpp: "setNewSize", header: "qgraphicssceneevent.h".}
 discard "forward decl of QGraphicsSceneMoveEventPrivate"
-type
-  QGraphicsSceneMoveEvent* {.importcpp: "QGraphicsSceneMoveEvent",
-                            header: "qgraphicssceneevent.h", bycopy.} = object of QGraphicsSceneEvent
 
 
 proc constructQGraphicsSceneMoveEvent*(): QGraphicsSceneMoveEvent {.constructor,

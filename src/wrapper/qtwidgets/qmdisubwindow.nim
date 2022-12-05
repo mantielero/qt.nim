@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -6,15 +8,7 @@ discard "forward decl of QMenu"
 discard "forward decl of QMdiArea"
 discard "forward decl of ControlContainer"
 discard "forward decl of QMdiSubWindowPrivate"
-type
-  QMdiSubWindow* {.importcpp: "QMdiSubWindow", header: "qmdisubwindow.h", bycopy.} = object of QWidget
 
-  QMdiSubWindowSubWindowOption* {.size: sizeof(cint),
-                                 importcpp: "QMdiSubWindow::SubWindowOption",
-                                 header: "qmdisubwindow.h".} = enum
-    AllowOutsideAreaHorizontally = 0x1, ##  internal
-    AllowOutsideAreaVertically = 0x2, ##  internal
-    RubberBandResize = 0x4, RubberBandMove = 0x8
 
 
 proc constructQMdiSubWindow*(parent: ptr QWidget = nil;

@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,8 +7,6 @@ qt_Require_Config(pushbutton)
 discard "forward decl of QPushButtonPrivate"
 discard "forward decl of QMenu"
 discard "forward decl of QStyleOptionButton"
-type
-  QPushButton* {.importcpp: "QPushButton", header: "qpushbutton.h", bycopy.} = object of QAbstractButton
 
 
 proc constructQPushButton*(parent: ptr QWidget = nil): QPushButton {.constructor,

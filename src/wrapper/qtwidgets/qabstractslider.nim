@@ -1,11 +1,10 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(abstractslider)
 discard "forward decl of QAbstractSliderPrivate"
-type
-  QAbstractSlider* {.importcpp: "QAbstractSlider", header: "qabstractslider.h",
-                    bycopy.} = object of QWidget
 
 
 proc constructQAbstractSlider*(parent: ptr QWidget = nil): QAbstractSlider {.
@@ -50,12 +49,6 @@ proc setInvertedControls*(this: var QAbstractSlider; a2: bool) {.
     importcpp: "setInvertedControls", header: "qabstractslider.h".}
 proc invertedControls*(this: QAbstractSlider): bool {.noSideEffect,
     importcpp: "invertedControls", header: "qabstractslider.h".}
-type
-  QAbstractSliderSliderAction* {.size: sizeof(cint),
-                                importcpp: "QAbstractSlider::SliderAction",
-                                header: "qabstractslider.h".} = enum
-    SliderNoAction, SliderSingleStepAdd, SliderSingleStepSub, SliderPageStepAdd,
-    SliderPageStepSub, SliderToMinimum, SliderToMaximum, SliderMove
 
 
 proc value*(this: QAbstractSlider): cint {.noSideEffect, importcpp: "value",

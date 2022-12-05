@@ -1,17 +1,12 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 discard "forward decl of QLayout"
 discard "forward decl of QSize"
 discard "forward decl of QLayoutPrivate"
-type
-  QLayout* {.importcpp: "QLayout", header: "qlayout.h", bycopy.} = object of QObject
 
-  QLayoutSizeConstraint* {.size: sizeof(cint),
-                          importcpp: "QLayout::SizeConstraint",
-                          header: "qlayout.h".} = enum
-    SetDefaultConstraint, SetNoConstraint, SetMinimumSize, SetFixedSize,
-    SetMaximumSize, SetMinAndMaxSize
 
 
 proc constructQLayout*(parent: ptr QWidget = nil): QLayout {.constructor,
@@ -108,3 +103,4 @@ proc isEnabled*(this: QLayout): bool {.noSideEffect, importcpp: "isEnabled",
 proc closestAcceptableSize*(w: ptr QWidget; s: QSize): QSize {.
     importcpp: "QLayout::closestAcceptableSize(@)", header: "qlayout.h".}
 ## ### support old includes
+

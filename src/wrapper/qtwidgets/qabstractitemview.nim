@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -8,43 +10,15 @@ discard "forward decl of QMenu"
 discard "forward decl of QDrag"
 discard "forward decl of QEvent"
 discard "forward decl of QAbstractItemViewPrivate"
-type
-  QAbstractItemView* {.importcpp: "QAbstractItemView",
-                      header: "qabstractitemview.h", bycopy.} = object of QAbstractScrollArea
-    editTriggers* {.importc: "EditTriggers".}: Q_Flag
-
-  QAbstractItemViewSelectionMode* {.size: sizeof(cint), importcpp: "QAbstractItemView::SelectionMode",
-                                   header: "qabstractitemview.h".} = enum
-    NoSelection, SingleSelection, MultiSelection, ExtendedSelection,
-    ContiguousSelection
 
 
-type
-  QAbstractItemViewSelectionBehavior* {.size: sizeof(cint), importcpp: "QAbstractItemView::SelectionBehavior",
-                                       header: "qabstractitemview.h".} = enum
-    SelectItems, SelectRows, SelectColumns
 
 
-type
-  QAbstractItemViewScrollHint* {.size: sizeof(cint),
-                                importcpp: "QAbstractItemView::ScrollHint",
-                                header: "qabstractitemview.h".} = enum
-    EnsureVisible, PositionAtTop, PositionAtBottom, PositionAtCenter
 
 
-type
-  QAbstractItemViewEditTrigger* {.size: sizeof(cint),
-                                 importcpp: "QAbstractItemView::EditTrigger",
-                                 header: "qabstractitemview.h".} = enum
-    NoEditTriggers = 0, CurrentChanged = 1, DoubleClicked = 2, SelectedClicked = 4,
-    EditKeyPressed = 8, AnyKeyPressed = 16, AllEditTriggers = 31
 
 
-type
-  QAbstractItemViewScrollMode* {.size: sizeof(cint),
-                                importcpp: "QAbstractItemView::ScrollMode",
-                                header: "qabstractitemview.h".} = enum
-    ScrollPerItem, ScrollPerPixel
+
 
 
 proc constructQAbstractItemView*(parent: ptr QWidget = nil): QAbstractItemView {.
@@ -121,11 +95,6 @@ proc setDragDropOverwriteMode*(this: var QAbstractItemView; overwrite: bool) {.
     importcpp: "setDragDropOverwriteMode", header: "qabstractitemview.h".}
 proc dragDropOverwriteMode*(this: QAbstractItemView): bool {.noSideEffect,
     importcpp: "dragDropOverwriteMode", header: "qabstractitemview.h".}
-type
-  QAbstractItemViewDragDropMode* {.size: sizeof(cint),
-                                  importcpp: "QAbstractItemView::DragDropMode",
-                                  header: "qabstractitemview.h".} = enum
-    NoDragDrop, DragOnly, DropOnly, DragDrop, InternalMove
 
 
 proc setDragDropMode*(this: var QAbstractItemView;

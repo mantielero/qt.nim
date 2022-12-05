@@ -1,11 +1,10 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(itemviews)
 discard "forward decl of QWidget"
-type
-  QItemEditorCreatorBase* {.importcpp: "QItemEditorCreatorBase",
-                           header: "qitemeditorfactory.h", bycopy.} = object
 
 
 proc destroyQItemEditorCreatorBase*(this: var QItemEditorCreatorBase) {.
@@ -14,9 +13,6 @@ proc createWidget*(this: QItemEditorCreatorBase; parent: ptr QWidget): ptr QWidg
     noSideEffect, importcpp: "createWidget", header: "qitemeditorfactory.h".}
 proc valuePropertyName*(this: QItemEditorCreatorBase): QByteArray {.noSideEffect,
     importcpp: "valuePropertyName", header: "qitemeditorfactory.h".}
-type
-  QItemEditorCreator*[T] {.importcpp: "QItemEditorCreator<\'0>",
-                          header: "qitemeditorfactory.h", bycopy.} = object of QItemEditorCreatorBase
 
 
 proc constructQItemEditorCreator*[T](valuePropertyName: QByteArray): QItemEditorCreator[
@@ -26,9 +22,6 @@ proc createWidget*[T](this: QItemEditorCreator[T]; parent: ptr QWidget): ptr QWi
     noSideEffect, importcpp: "createWidget", header: "qitemeditorfactory.h".}
 proc valuePropertyName*[T](this: QItemEditorCreator[T]): QByteArray {.noSideEffect,
     importcpp: "valuePropertyName", header: "qitemeditorfactory.h".}
-type
-  QStandardItemEditorCreator*[T] {.importcpp: "QStandardItemEditorCreator<\'0>",
-                                  header: "qitemeditorfactory.h", bycopy.} = object of QItemEditorCreatorBase
 
 
 proc constructQStandardItemEditorCreator*[T](): QStandardItemEditorCreator[T] {.
@@ -42,9 +35,6 @@ proc valuePropertyName*[T](this: QStandardItemEditorCreator[T]): QByteArray {.
 ##  Q_INLINE_TEMPLATE QItemEditorCreator<T>::QItemEditorCreator(const QByteArray &avaluePropertyName)
 ##      : propertyName(avaluePropertyName) {}
 
-type
-  QItemEditorFactory* {.importcpp: "QItemEditorFactory",
-                       header: "qitemeditorfactory.h", bycopy.} = object
 
 
 proc constructQItemEditorFactory*(): QItemEditorFactory {.constructor,

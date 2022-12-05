@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2020 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -6,8 +8,6 @@ discard "forward decl of QAbstractItemView"
 discard "forward decl of QLineEdit"
 discard "forward decl of QComboBoxPrivate"
 discard "forward decl of QCompleter"
-type
-  QComboBox* {.importcpp: "QComboBox", header: "qcombobox.h", bycopy.} = object of QWidget
 
 
 proc constructQComboBox*(parent: ptr QWidget = nil): QComboBox {.constructor,
@@ -38,24 +38,12 @@ proc findText*(this: QComboBox; text: QString; flags: MatchFlags = staticCast[Ma
 proc findData*(this: QComboBox; data: QVariant; role: cint = userRole; flags: MatchFlags = staticCast[
     MatchFlags](matchExactly or matchCaseSensitive)): cint {.noSideEffect,
     importcpp: "findData", header: "qcombobox.h".}
-type
-  QComboBoxInsertPolicy* {.size: sizeof(cint),
-                          importcpp: "QComboBox::InsertPolicy",
-                          header: "qcombobox.h".} = enum
-    NoInsert, InsertAtTop, InsertAtCurrent, InsertAtBottom, InsertAfterCurrent,
-    InsertBeforeCurrent, InsertAlphabetically
 
 
 proc insertPolicy*(this: QComboBox): QComboBoxInsertPolicy {.noSideEffect,
     importcpp: "insertPolicy", header: "qcombobox.h".}
 proc setInsertPolicy*(this: var QComboBox; policy: QComboBoxInsertPolicy) {.
     importcpp: "setInsertPolicy", header: "qcombobox.h".}
-type
-  QComboBoxSizeAdjustPolicy* {.size: sizeof(cint),
-                              importcpp: "QComboBox::SizeAdjustPolicy",
-                              header: "qcombobox.h".} = enum
-    AdjustToContents, AdjustToContentsOnFirstShow,
-    AdjustToMinimumContentsLengthWithIcon
 
 
 proc sizeAdjustPolicy*(this: QComboBox): QComboBoxSizeAdjustPolicy {.noSideEffect,

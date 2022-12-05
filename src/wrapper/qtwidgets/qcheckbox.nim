@@ -1,11 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(checkbox)
 discard "forward decl of QCheckBoxPrivate"
 discard "forward decl of QStyleOptionButton"
-type
-  QCheckBox* {.importcpp: "QCheckBox", header: "qcheckbox.h", bycopy.} = object of QAbstractButton
 
 
 proc constructQCheckBox*(parent: ptr QWidget = nil): QCheckBox {.constructor,

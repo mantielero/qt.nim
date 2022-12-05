@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -7,42 +9,15 @@ discard "forward decl of QPainterPath"
 discard "forward decl of QPolygonF"
 discard "forward decl of QStyleOptionGraphicsItem"
 discard "forward decl of QGraphicsViewPrivate"
-type
-  QGraphicsView* {.importcpp: "QGraphicsView", header: "qgraphicsview.h", bycopy.} = object of QAbstractScrollArea
-
-  QGraphicsViewViewportAnchor* {.size: sizeof(cint),
-                                importcpp: "QGraphicsView::ViewportAnchor",
-                                header: "qgraphicsview.h".} = enum
-    NoAnchor, AnchorViewCenter, AnchorUnderMouse
 
 
-type
-  QGraphicsViewCacheModeFlag* {.size: sizeof(cint),
-                               importcpp: "QGraphicsView::CacheModeFlag",
-                               header: "qgraphicsview.h".} = enum
-    CacheNone = 0x0, CacheBackground = 0x1
 
 
-type
-  QGraphicsViewDragMode* {.size: sizeof(cint),
-                          importcpp: "QGraphicsView::DragMode",
-                          header: "qgraphicsview.h".} = enum
-    NoDrag, ScrollHandDrag, RubberBandDrag
 
 
-type
-  QGraphicsViewViewportUpdateMode* {.size: sizeof(cint), importcpp: "QGraphicsView::ViewportUpdateMode",
-                                    header: "qgraphicsview.h".} = enum
-    FullViewportUpdate, MinimalViewportUpdate, SmartViewportUpdate,
-    NoViewportUpdate, BoundingRectViewportUpdate
 
 
-type
-  QGraphicsViewOptimizationFlag* {.size: sizeof(cint),
-                                  importcpp: "QGraphicsView::OptimizationFlag",
-                                  header: "qgraphicsview.h".} = enum
-    DontSavePainterState = 0x1, DontAdjustForAntialiasing = 0x2,
-    IndirectPainting = 0x4
+
 
 
 proc constructQGraphicsView*(parent: ptr QWidget = nil): QGraphicsView {.constructor,

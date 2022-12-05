@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -7,8 +9,6 @@ qt_Require_Config(menu)
 discard "forward decl of QMenuPrivate"
 discard "forward decl of QStyleOptionMenuItem"
 discard "forward decl of QPlatformMenu"
-type
-  QMenu* {.importcpp: "QMenu", header: "qmenu.h", bycopy.} = object of QWidget
 
 
 proc constructQMenu*(parent: ptr QWidget = nil): QMenu {.constructor,

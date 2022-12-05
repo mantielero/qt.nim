@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,8 +7,6 @@
 ##  ### move to qnamespace.h
 
 discard "forward decl of QGesturePrivate"
-type
-  QGesture* {.importcpp: "QGesture", header: "qgesture.h", bycopy.} = object of QObject
 
 
 proc constructQGesture*(parent: ptr QObject = nil): QGesture {.constructor,
@@ -25,11 +25,6 @@ proc hasHotSpot*(this: QGesture): bool {.noSideEffect, importcpp: "hasHotSpot",
                                      header: "qgesture.h".}
 proc unsetHotSpot*(this: var QGesture) {.importcpp: "unsetHotSpot",
                                      header: "qgesture.h".}
-type
-  QGestureGestureCancelPolicy* {.size: sizeof(cint),
-                                importcpp: "QGesture::GestureCancelPolicy",
-                                header: "qgesture.h".} = enum
-    CancelNone = 0, CancelAllInContext
 
 
 proc setGestureCancelPolicy*(this: var QGesture; policy: QGestureGestureCancelPolicy) {.
@@ -37,8 +32,6 @@ proc setGestureCancelPolicy*(this: var QGesture; policy: QGestureGestureCancelPo
 proc gestureCancelPolicy*(this: QGesture): QGestureGestureCancelPolicy {.
     noSideEffect, importcpp: "gestureCancelPolicy", header: "qgesture.h".}
 discard "forward decl of QPanGesturePrivate"
-type
-  QPanGesture* {.importcpp: "QPanGesture", header: "qgesture.h", bycopy.} = object of QGesture
 
 
 proc constructQPanGesture*(parent: ptr QObject = nil): QPanGesture {.constructor,
@@ -60,14 +53,7 @@ proc setOffset*(this: var QPanGesture; value: QPointF) {.importcpp: "setOffset",
 proc setAcceleration*(this: var QPanGesture; value: Qreal) {.
     importcpp: "setAcceleration", header: "qgesture.h".}
 discard "forward decl of QPinchGesturePrivate"
-type
-  QPinchGesture* {.importcpp: "QPinchGesture", header: "qgesture.h", bycopy.} = object of QGesture
-    changeFlags* {.importc: "ChangeFlags".}: Q_Flag
 
-  QPinchGestureChangeFlag* {.size: sizeof(cint),
-                            importcpp: "QPinchGesture::ChangeFlag",
-                            header: "qgesture.h".} = enum
-    ScaleFactorChanged = 0x1, RotationAngleChanged = 0x2, CenterPointChanged = 0x4
 
 
 proc constructQPinchGesture*(parent: ptr QObject = nil): QPinchGesture {.constructor,
@@ -119,13 +105,7 @@ proc setLastRotationAngle*(this: var QPinchGesture; value: Qreal) {.
 proc setRotationAngle*(this: var QPinchGesture; value: Qreal) {.
     importcpp: "setRotationAngle", header: "qgesture.h".}
 discard "forward decl of QSwipeGesturePrivate"
-type
-  QSwipeGesture* {.importcpp: "QSwipeGesture", header: "qgesture.h", bycopy.} = object of QGesture
 
-  QSwipeGestureSwipeDirection* {.size: sizeof(cint),
-                                importcpp: "QSwipeGesture::SwipeDirection",
-                                header: "qgesture.h".} = enum
-    NoDirection, Left, Right, Up, Down
 
 
 proc constructQSwipeGesture*(parent: ptr QObject = nil): QSwipeGesture {.constructor,
@@ -141,8 +121,6 @@ proc swipeAngle*(this: QSwipeGesture): Qreal {.noSideEffect, importcpp: "swipeAn
 proc setSwipeAngle*(this: var QSwipeGesture; value: Qreal) {.
     importcpp: "setSwipeAngle", header: "qgesture.h".}
 discard "forward decl of QTapGesturePrivate"
-type
-  QTapGesture* {.importcpp: "QTapGesture", header: "qgesture.h", bycopy.} = object of QGesture
 
 
 proc constructQTapGesture*(parent: ptr QObject = nil): QTapGesture {.constructor,
@@ -154,8 +132,6 @@ proc position*(this: QTapGesture): QPointF {.noSideEffect, importcpp: "position"
 proc setPosition*(this: var QTapGesture; pos: QPointF) {.importcpp: "setPosition",
     header: "qgesture.h".}
 discard "forward decl of QTapAndHoldGesturePrivate"
-type
-  QTapAndHoldGesture* {.importcpp: "QTapAndHoldGesture", header: "qgesture.h", bycopy.} = object of QGesture
 
 
 proc constructQTapAndHoldGesture*(parent: ptr QObject = nil): QTapAndHoldGesture {.
@@ -172,8 +148,6 @@ proc timeout*(): cint {.importcpp: "QTapAndHoldGesture::timeout(@)",
                      header: "qgesture.h".}
 discard "forward decl of QGesture"
 discard "forward decl of QGestureEventPrivate"
-type
-  QGestureEvent* {.importcpp: "QGestureEvent", header: "qgesture.h", bycopy.} = object of QEvent
 
 
 proc constructQGestureEvent*(gestures: QList[ptr QGesture]): QGestureEvent {.

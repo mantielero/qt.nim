@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -9,42 +11,15 @@ discard "forward decl of QFileDialogPrivate"
 discard "forward decl of QAbstractFileIconProvider"
 discard "forward decl of QAbstractItemDelegate"
 discard "forward decl of QAbstractProxyModel"
-type
-  QFileDialog* {.importcpp: "QFileDialog", header: "qfiledialog.h", bycopy.} = object of QDialog
-    options* {.importc: "Options".}: Q_Flag
-
-  QFileDialogViewMode* {.size: sizeof(cint), importcpp: "QFileDialog::ViewMode",
-                        header: "qfiledialog.h".} = enum
-    Detail, List
 
 
-type
-  QFileDialogFileMode* {.size: sizeof(cint), importcpp: "QFileDialog::FileMode",
-                        header: "qfiledialog.h".} = enum
-    AnyFile, ExistingFile, Directory, ExistingFiles
 
 
-type
-  QFileDialogAcceptMode* {.size: sizeof(cint),
-                          importcpp: "QFileDialog::AcceptMode",
-                          header: "qfiledialog.h".} = enum
-    AcceptOpen, AcceptSave
 
 
-type
-  QFileDialogDialogLabel* {.size: sizeof(cint),
-                           importcpp: "QFileDialog::DialogLabel",
-                           header: "qfiledialog.h".} = enum
-    LookIn, FileName, FileType, Accept, Reject
 
 
-type
-  QFileDialogOption* {.size: sizeof(cint), importcpp: "QFileDialog::Option",
-                      header: "qfiledialog.h".} = enum
-    ShowDirsOnly = 0x00000001, DontResolveSymlinks = 0x00000002,
-    DontConfirmOverwrite = 0x00000004, DontUseNativeDialog = 0x00000008,
-    ReadOnly = 0x00000010, HideNameFilterDetails = 0x00000020,
-    DontUseCustomDirectoryIcons = 0x00000040
+
 
 
 proc constructQFileDialog*(parent: ptr QWidget; f: WindowFlags): QFileDialog {.

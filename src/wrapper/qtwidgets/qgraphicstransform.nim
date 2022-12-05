@@ -1,12 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(graphicsview)
 discard "forward decl of QGraphicsItem"
 discard "forward decl of QGraphicsTransformPrivate"
-type
-  QGraphicsTransform* {.importcpp: "QGraphicsTransform",
-                       header: "qgraphicstransform.h", bycopy.} = object of QObject
 
 
 proc constructQGraphicsTransform*(parent: ptr QObject = nil): QGraphicsTransform {.
@@ -16,9 +15,6 @@ proc destroyQGraphicsTransform*(this: var QGraphicsTransform) {.
 proc applyTo*(this: QGraphicsTransform; matrix: ptr QMatrix4x4) {.noSideEffect,
     importcpp: "applyTo", header: "qgraphicstransform.h".}
 discard "forward decl of QGraphicsScalePrivate"
-type
-  QGraphicsScale* {.importcpp: "QGraphicsScale", header: "qgraphicstransform.h",
-                   bycopy.} = object of QGraphicsTransform
 
 
 proc constructQGraphicsScale*(parent: ptr QObject = nil): QGraphicsScale {.constructor,
@@ -44,9 +40,6 @@ proc setZScale*(this: var QGraphicsScale; a2: Qreal) {.importcpp: "setZScale",
 proc applyTo*(this: QGraphicsScale; matrix: ptr QMatrix4x4) {.noSideEffect,
     importcpp: "applyTo", header: "qgraphicstransform.h".}
 discard "forward decl of QGraphicsRotationPrivate"
-type
-  QGraphicsRotation* {.importcpp: "QGraphicsRotation",
-                      header: "qgraphicstransform.h", bycopy.} = object of QGraphicsTransform
 
 
 proc constructQGraphicsRotation*(parent: ptr QObject = nil): QGraphicsRotation {.

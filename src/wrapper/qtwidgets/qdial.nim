@@ -1,11 +1,11 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(dial)
 discard "forward decl of QDialPrivate"
 discard "forward decl of QStyleOptionSlider"
-type
-  QDial* {.importcpp: "QDial", header: "qdial.h", bycopy.} = object of QAbstractSlider
 
 
 proc constructQDial*(parent: ptr QWidget = nil): QDial {.constructor,

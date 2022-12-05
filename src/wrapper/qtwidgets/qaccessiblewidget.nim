@@ -1,10 +1,9 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 discard "forward decl of QAccessibleWidgetPrivate"
-type
-  QAccessibleWidget* {.importcpp: "QAccessibleWidget",
-                      header: "qaccessiblewidget.h", bycopy.} = object of QAccessibleObject
 
 
 proc constructQAccessibleWidget*(o: ptr QWidget; r: Role = client;

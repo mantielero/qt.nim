@@ -1,38 +1,19 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 qt_Require_Config(listview)
 discard "forward decl of QListViewPrivate"
-type
-  QListView* {.importcpp: "QListView", header: "qlistview.h", bycopy.} = object of QAbstractItemView
-
-  QListViewMovement* {.size: sizeof(cint), importcpp: "QListView::Movement",
-                      header: "qlistview.h".} = enum
-    Static, Free, Snap
 
 
-type
-  QListViewFlow* {.size: sizeof(cint), importcpp: "QListView::Flow",
-                  header: "qlistview.h".} = enum
-    LeftToRight, TopToBottom
 
 
-type
-  QListViewResizeMode* {.size: sizeof(cint), importcpp: "QListView::ResizeMode",
-                        header: "qlistview.h".} = enum
-    Fixed, Adjust
 
 
-type
-  QListViewLayoutMode* {.size: sizeof(cint), importcpp: "QListView::LayoutMode",
-                        header: "qlistview.h".} = enum
-    SinglePass, Batched
 
 
-type
-  QListViewViewMode* {.size: sizeof(cint), importcpp: "QListView::ViewMode",
-                      header: "qlistview.h".} = enum
-    ListMode, IconMode
+
 
 
 proc constructQListView*(parent: ptr QWidget = nil): QListView {.constructor,

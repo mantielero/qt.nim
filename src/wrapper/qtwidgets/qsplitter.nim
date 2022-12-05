@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -5,8 +7,6 @@ qt_Require_Config(splitter)
 discard "forward decl of QSplitterPrivate"
 discard "forward decl of QTextStream"
 discard "forward decl of QSplitterHandle"
-type
-  QSplitter* {.importcpp: "QSplitter", header: "qsplitter.h", bycopy.} = object of QFrame
 
 
 proc constructQSplitter*(parent: ptr QWidget = nil): QSplitter {.constructor,
@@ -67,8 +67,6 @@ proc handle*(this: QSplitter; index: cint): ptr QSplitterHandle {.noSideEffect,
 proc setStretchFactor*(this: var QSplitter; index: cint; stretch: cint) {.
     importcpp: "setStretchFactor", header: "qsplitter.h".}
 discard "forward decl of QSplitterHandlePrivate"
-type
-  QSplitterHandle* {.importcpp: "QSplitterHandle", header: "qsplitter.h", bycopy.} = object of QWidget
 
 
 proc constructQSplitterHandle*(o: Orientation; parent: ptr QSplitter): QSplitterHandle {.

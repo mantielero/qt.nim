@@ -1,3 +1,5 @@
+import qtwidgets_types
+
 ##  Copyright (C) 2016 The Qt Company Ltd.
 ##  SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
@@ -6,13 +8,7 @@ discard "forward decl of QListWidget"
 discard "forward decl of QListModel"
 discard "forward decl of QWidgetItemData"
 discard "forward decl of QListWidgetItemPrivate"
-type
-  QListWidgetItem* {.importcpp: "QListWidgetItem", header: "qlistwidget.h", bycopy.} = object
 
-  QListWidgetItemItemType* {.size: sizeof(cint),
-                            importcpp: "QListWidgetItem::ItemType",
-                            header: "qlistwidget.h".} = enum
-    Type = 0, UserType = 1000
 
 
 proc constructQListWidgetItem*(listview: ptr QListWidget = nil; `type`: cint = `type`): QListWidgetItem {.
@@ -127,8 +123,6 @@ when not defined(QT_NO_DATASTREAM):
   proc `>>`*(`in`: var QDataStream; item: var QListWidgetItem): var QDataStream {.
       importcpp: "(# >> #)", header: "qlistwidget.h".}
 discard "forward decl of QListWidgetPrivate"
-type
-  QListWidget* {.importcpp: "QListWidget", header: "qlistwidget.h", bycopy.} = object of QListView
 
 
 proc constructQListWidget*(parent: ptr QWidget = nil): QListWidget {.constructor,
