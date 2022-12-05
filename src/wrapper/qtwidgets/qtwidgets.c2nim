@@ -1,0 +1,47 @@
+#ifdef C2NIM
+#def Q_WIDGETS_EXPORT
+#def QT_BEGIN_NAMESPACE
+#def QT_END_NAMESPACE
+#def Q_OBJECT
+#def Q_PROPERTY(x)
+#def Q_SLOTS
+#def Q_SIGNALS   protected
+#def SLOT(a)     "1"#a
+#def SIGNAL(a)   "2"#a
+#def QT_DEPRECATED_SINCE(major,minor) true
+#def QT_DEPRECATED_VERSION_X_6_0(x)
+#def Q_PRIVATE_SLOT(x,y)
+#def Q_DECLARE_FLAGS(x,y)
+#def Q_DECLARE_OPERATORS_FOR_FLAGS(x)
+#def Q_ENUMS(x)
+#def Q_INVOKABLE
+#assumendef QT_NO_CONTEXTMENU
+#assumendef Q_MOC_RUN
+#assumendef Q_CLANG_QDOC
+#def Q_DECLARE_MIXED_ENUM_OPERATORS_SYMMETRIC(x,y,z)
+#def QT_CONFIG(x) true
+#def Q_PRIVATE_PROPERTY(x,y)
+#def Q_CLASSINFO(x,y)
+#def QDOC_PROPERTY(x)
+#def QT_DECL_METATYPE_EXTERN_TAGGED(x,y,z)
+#def Q_DECLARE_INTERFACE(x,y)
+#def Q_DECLARE_PRIVATE_D(x,y)
+#def Q_FLAGS(x)
+#def Q_INTERFACES(x)
+#assumendef QT_NO_ACTION
+#def QT_DEPRECATED_VERSION_X_6_1(x)
+#assumendef QT_NO_GESTURES
+#def QT_WIDGETS_INLINE_SINCE(major, minor) inline
+#def QT_WIDGETS_INLINE_IMPL_SINCE(major, minor) 1
+#def QT_DEPRECATED_VERSION_X_6_4(x)
+#def Q_OVERRIDE(x)
+#def Q_WIDGETS_EXPORT
+#def Q_GADGET
+#def Q_DECLARE_FLAGS(x,y)
+#def Q_ENUM(x)
+#def Q_DECL_CONST_FUNCTION(x)
+#def Q_DECLARE_MIXED_ENUM_OPERATORS(x,y,z)
+#def QT_DEPRECATED_VERSION_X_6_2(x)
+#def QT_DEPRECATED_SINCE(major,minor) true
+#def QT_WIDGETS_REMOVED_SINCE(major, minor) true
+#endif
